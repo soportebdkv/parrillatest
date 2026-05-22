@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard PARRILLA · Inteligencia de Negocio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Sora:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#14100c; --bg2:#1b1510; --panel:#211a13; --panel2:#2a2118;
+  --line:#3a2e22; --line2:#4a3a2a;
+  --ember:#ff6b2c; --ember2:#ff9248; --gold:#f6c14b; --amber:#ffb347;
+  --green:#7bc47f; --red:#e35d5b; --blue:#5fb3c4;
+  --cream:#f4ebdd; --muted:#b59f87; --muted2:#7d6b58;
+  --p1:#ff6b2c; --p2:#f6c14b; --p3:#5fb3c4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Sora',sans-serif; background:var(--bg); color:var(--cream);
+  line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.5;
+  background:
+    radial-gradient(900px 500px at 12% -8%, rgba(255,107,44,.16), transparent 60%),
+    radial-gradient(800px 480px at 100% 0%, rgba(246,193,75,.10), transparent 55%),
+    radial-gradient(700px 600px at 80% 100%, rgba(95,179,196,.07), transparent 60%);
+}
+body::after{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.wrap{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:0 22px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+  background:rgba(20,16,12,.82);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1320px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:26px}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Bricolage Grotesque';font-weight:800;
+  font-size:1.05rem;letter-spacing:.5px;white-space:nowrap}
+.flame{width:26px;height:26px;flex:0 0 auto}
+.nav-links{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:500;
+  padding:7px 12px;border-radius:8px;transition:.2s;white-space:nowrap}
+.nav-links a:hover{color:var(--cream);background:var(--panel2)}
+
+/* HERO */
+header.hero{padding:64px 0 38px;position:relative}
+.eyebrow{font-family:'Space Mono';font-size:.74rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--ember);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:38px;height:1px;background:var(--ember)}
+h1.title{font-family:'Bricolage Grotesque';font-weight:800;line-height:.92;letter-spacing:-1.5px;
+  font-size:clamp(3.2rem,9vw,7rem);text-transform:uppercase}
+h1.title .grad{background:linear-gradient(102deg,var(--ember) 0%,var(--gold) 60%,var(--amber) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{margin-top:18px;max-width:620px;color:var(--muted);font-size:1.02rem}
+.period-chip{display:inline-flex;align-items:center;gap:9px;margin-top:22px;padding:9px 16px;
+  border:1px solid var(--line2);border-radius:50px;font-family:'Space Mono';font-size:.8rem;
+  color:var(--gold);background:rgba(246,193,75,.05)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+
+/* SECTIONS */
+section{padding:46px 0;border-top:1px solid var(--line);scroll-margin-top:70px}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:30px;flex-wrap:wrap}
+.sec-num{font-family:'Space Mono';font-size:.8rem;color:var(--ember);letter-spacing:1px}
+.sec-head h2{font-family:'Bricolage Grotesque';font-weight:700;font-size:clamp(1.6rem,4vw,2.5rem);
+  letter-spacing:-.5px;line-height:1}
+.sec-head p{color:var(--muted);font-size:.9rem;flex-basis:100%;max-width:680px;margin-top:-6px}
+
+/* KPI GRID */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px}
+.kpi{background:linear-gradient(160deg,var(--panel) 0%,var(--bg2) 100%);
+  border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px;position:relative;overflow:hidden;transition:.25s}
+.kpi:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 14px 40px rgba(0,0,0,.4)}
+.kpi::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--ember),var(--gold))}
+.kpi .lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted);font-weight:600}
+.kpi .val{font-family:'Bricolage Grotesque';font-weight:800;font-size:2.05rem;margin-top:10px;letter-spacing:-1px;line-height:1}
+.kpi .sub{font-family:'Space Mono';font-size:.74rem;color:var(--muted2);margin-top:9px;display:flex;align-items:center;gap:7px}
+.tag{font-family:'Space Mono';font-size:.7rem;padding:2px 8px;border-radius:6px;font-weight:700}
+.tag.up{color:var(--green);background:rgba(123,196,127,.12)}
+.tag.dn{color:var(--red);background:rgba(227,93,91,.12)}
+.tag.neu{color:var(--gold);background:rgba(246,193,75,.12)}
+
+/* PANELS / CHARTS */
+.grid-2{display:grid;grid-template-columns:1.25fr 1fr;gap:18px}
+.grid-2b{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}
+.panel h3{font-family:'Bricolage Grotesque';font-weight:700;font-size:1.05rem;margin-bottom:4px}
+.panel .ph{font-size:.78rem;color:var(--muted);margin-bottom:18px}
+.chart-box{position:relative;height:300px}
+.chart-box.tall{height:340px}
+.chart-box.short{height:250px}
+
+/* STORE CARDS */
+.stores{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.store-card{border-radius:18px;padding:24px;position:relative;overflow:hidden;border:1px solid var(--line)}
+.store-card.s1{background:linear-gradient(165deg,rgba(255,107,44,.13),var(--panel) 70%)}
+.store-card.s2{background:linear-gradient(165deg,rgba(246,193,75,.13),var(--panel) 70%)}
+.store-card.s3{background:linear-gradient(165deg,rgba(95,179,196,.13),var(--panel) 70%)}
+.store-card .badge{font-family:'Bricolage Grotesque';font-weight:800;font-size:1.3rem;letter-spacing:-.5px;display:flex;align-items:center;gap:10px}
+.swatch{width:13px;height:13px;border-radius:4px}
+.store-rows{margin-top:18px;display:flex;flex-direction:column;gap:11px}
+.srow{display:flex;justify-content:space-between;align-items:center;font-size:.86rem;
+  padding-bottom:10px;border-bottom:1px dashed var(--line)}
+.srow:last-child{border:none;padding-bottom:0}
+.srow .k{color:var(--muted)}
+.srow .v{font-family:'Space Mono';font-weight:700}
+.store-util{margin-top:16px;padding:14px;border-radius:12px;background:rgba(0,0,0,.22);text-align:center}
+.store-util .u-lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted)}
+.store-util .u-val{font-family:'Bricolage Grotesque';font-weight:800;font-size:1.7rem;margin-top:4px}
+
+/* TABS */
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}
+.tab{font-family:'Sora';font-size:.8rem;font-weight:600;padding:8px 16px;border-radius:9px;
+  border:1px solid var(--line2);background:transparent;color:var(--muted);cursor:pointer;transition:.2s}
+.tab:hover{color:var(--cream)}
+.tab.active{background:linear-gradient(95deg,var(--ember),var(--gold));color:#1a130c;border-color:transparent}
+
+/* TABLE */
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:.83rem;min-width:480px}
+thead th{background:var(--panel2);text-align:left;padding:12px 14px;font-size:.7rem;
+  text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;position:sticky;top:0}
+tbody td{padding:11px 14px;border-top:1px solid var(--line)}
+tbody tr:hover{background:rgba(255,107,44,.05)}
+td.num,th.num{text-align:right;font-family:'Space Mono';white-space:nowrap}
+td.code{font-family:'Space Mono';font-size:.76rem;color:var(--gold)}
+.rank{display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;
+  border-radius:7px;font-family:'Space Mono';font-size:.74rem;font-weight:700;background:var(--panel2);color:var(--ember)}
+.pos{color:var(--green)} .neg{color:var(--red)}
+.bar-cell{position:relative}
+.bar-cell .barfill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,rgba(255,107,44,.18),rgba(255,107,44,.04));border-radius:0}
+.bar-cell span{position:relative}
+
+/* TWO COL TABLES */
+.tbl-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+/* FOOTER */
+footer{padding:46px 0 60px;border-top:1px solid var(--line);color:var(--muted2);font-size:.8rem}
+footer .fbrand{font-family:'Bricolage Grotesque';font-weight:800;color:var(--cream);font-size:1.1rem;margin-bottom:8px}
+.note{background:rgba(246,193,75,.06);border:1px solid var(--line2);border-radius:12px;padding:14px 16px;
+  font-size:.8rem;color:var(--muted);margin-top:18px;display:flex;gap:10px}
+.note b{color:var(--gold)}
+
+@media(max-width:900px){.grid-2,.grid-2b,.stores,.tbl-2{grid-template-columns:1fr}}
+.fade{opacity:0;transform:translateY(18px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+.fade.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-in">
+    <div class="brand">
+      <svg class="flame" viewBox="0 0 24 24" fill="none"><path d="M12 2c1 4-2 5-2 8a4 4 0 008 0c0-2-1-3-1-3 2 1 3 4 3 6a8 8 0 11-16 0c0-5 5-7 5-11 1 1 3 1 3 1z" fill="url(#fg)"/><defs><linearGradient id="fg" x1="4" y1="2" x2="20" y2="22"><stop stop-color="#ff6b2c"/><stop offset="1" stop-color="#f6c14b"/></linearGradient></defs></svg>
+      DASHBOARD<span style="color:var(--ember)">PARRILLA</span>
+    </div>
+    <div class="nav-links">
+      <a href="#global">Global</a>
+      <a href="#negocios">Negocios</a>
+      <a href="#mensual">Mensual</a>
+      <a href="#patrones">Patrones</a>
+      <a href="#concentracion">Concentración</a>
+      <a href="#compras">Compras</a>
+      <a href="#ventas">Ventas</a>
+      <a href="#margenes">Márgenes</a>
+      <a href="#devoluciones">Devoluciones</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Inteligencia de negocio · Análisis de rentabilidad</div>
+    <h1 class="title">Dashboard <span class="grad">Parrilla</span></h1>
+    <p class="subtitle">Análisis consolidado de compras, ventas, márgenes y rentabilidad de las tres unidades de negocio — Parrilla&nbsp;1, Parrilla&nbsp;2 y Parrilla&nbsp;3.</p>
+    <div class="period-chip"><span class="dot"></span><span id="periodo"></span></div>
+  </header>
+
+  <!-- GLOBAL -->
+  <section id="global" class="fade">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2>Resumen Global</h2>
+      <p>Indicadores consolidados de los tres negocios. La utilidad bruta se estima como ventas netas menos compras del periodo.</p>
+    </div>
+    <div class="kpi-grid" id="kpiGlobal"></div>
+    <div class="kpi-grid" id="kpiGlobal2" style="margin-top:16px"></div>
+    <div class="grid-2" style="margin-top:18px">
+      <div class="panel"><h3>Compra vs. Venta vs. Utilidad</h3><p class="ph">Consolidado del periodo (MXN)</p><div class="chart-box"><canvas id="chGlobalBars"></canvas></div></div>
+      <div class="panel"><h3>Participación de ventas</h3><p class="ph">Peso de cada negocio sobre la venta total</p><div class="chart-box"><canvas id="chShare"></canvas></div></div>
+    </div>
+    <div class="panel" style="margin-top:18px"><h3>Tendencia mensual consolidada</h3><p class="ph">Ventas, compras y utilidad por mes</p><div class="chart-box tall"><canvas id="chGlobalTrend"></canvas></div></div>
+  </section>
+
+  <!-- NEGOCIOS -->
+  <section id="negocios" class="fade">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2>Rentabilidad por Negocio</h2>
+      <p>Desempeño individual de cada parrilla. Cajero y almacén están amarrados: Cajero 1 → Parrilla 1, Cajero 2 → Parrilla 2, Cajero 3 → Parrilla 3.</p>
+    </div>
+    <div class="stores" id="storeCards"></div>
+    <div class="grid-2" style="margin-top:18px">
+      <div class="panel"><h3>Comparativo por negocio</h3><p class="ph">Ventas netas, compras y utilidad (MXN)</p><div class="chart-box tall"><canvas id="chStoreCompare"></canvas></div></div>
+      <div class="panel"><h3>Margen de utilidad</h3><p class="ph">Margen bruto % por negocio vs. global</p><div class="chart-box tall"><canvas id="chStoreMargin"></canvas></div></div>
+    </div>
+  </section>
+
+  <!-- MENSUAL -->
+  <section id="mensual" class="fade">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2>Análisis Mensual por Negocio</h2>
+      <p>Evolución de ventas mes a mes para evaluar la rentabilidad de cada unidad y el consolidado.</p>
+    </div>
+    <div class="tabs" id="monthTabs"></div>
+    <div class="grid-2">
+      <div class="panel"><h3>Ventas por mes</h3><p class="ph" id="monthSelLbl"></p><div class="chart-box tall"><canvas id="chMonthSales"></canvas></div></div>
+      <div class="panel"><h3>Utilidad y margen por mes</h3><p class="ph">Utilidad (barras) y margen % (línea)</p><div class="chart-box tall"><canvas id="chMonthProfit"></canvas></div></div>
+    </div>
+    <div class="panel" style="margin-top:18px"><h3>Ventas mensuales — los tres negocios</h3><p class="ph">Comparativo de ventas por negocio en cada mes</p><div class="chart-box tall"><canvas id="chMonthAll"></canvas></div></div>
+  </section>
+
+  <!-- PATRONES -->
+  <section id="patrones" class="fade">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2>Patrones de Venta</h2>
+      <p>Cómo se distribuye la venta por día de la semana y por tamaño de ticket.</p>
+    </div>
+    <div class="tabs" id="dowTabs"></div>
+    <div class="grid-2">
+      <div class="panel"><h3>Ventas por día de la semana</h3><p class="ph" id="dowLbl"></p><div class="chart-box tall"><canvas id="chDow"></canvas></div></div>
+      <div class="panel"><h3>Distribución de tickets por importe</h3><p class="ph">Número de tickets por rango (consolidado)</p><div class="chart-box tall"><canvas id="chDist"></canvas></div></div>
+    </div>
+  </section>
+
+  <!-- CONCENTRACION -->
+  <section id="concentracion" class="fade">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <h2>Concentración y Crecimiento</h2>
+      <p>Qué tan concentrada está la venta en pocos productos (Pareto) y el crecimiento mensual de cada negocio.</p>
+    </div>
+    <div class="kpi-grid" id="kpiPareto"></div>
+    <div class="grid-2" style="margin-top:18px">
+      <div class="panel"><h3>Curva de Pareto (consolidado)</h3><p class="ph">% acumulado de ventas según número de artículos</p><div class="chart-box tall"><canvas id="chPareto"></canvas></div></div>
+      <div class="panel"><h3>Crecimiento mensual de ventas</h3><p class="ph">Variación % vs. mes anterior</p><div class="chart-box tall"><canvas id="chMoM"></canvas></div></div>
+    </div>
+  </section>
+
+  <!-- COMPRAS -->
+  <section id="compras" class="fade">
+    <div class="sec-head">
+      <span class="sec-num">06</span>
+      <h2>Análisis de Compras por Artículo</h2>
+      <p>Qué se compra más y qué se compra menos, evaluando unidades y costo por artículo.</p>
+    </div>
+    <div class="tabs" id="comprasTabs"></div>
+    <div class="panel" style="margin-bottom:18px"><h3 id="comprasChartTitle">Top 15 artículos por monto de compra</h3><p class="ph">Costo total acumulado (MXN)</p><div class="chart-box tall"><canvas id="chCompras"></canvas></div></div>
+    <div class="tbl-2">
+      <div class="panel"><h3>Más comprados (por monto)</h3><p class="ph">Mayor inversión en inventario</p><div id="tblComprasTop"></div></div>
+      <div class="panel"><h3>Menos comprados (por monto)</h3><p class="ph">Menor inversión en inventario</p><div id="tblComprasBottom"></div></div>
+    </div>
+  </section>
+
+  <!-- VENTAS -->
+  <section id="ventas" class="fade">
+    <div class="sec-head">
+      <span class="sec-num">07</span>
+      <h2>Análisis de Ventas por Artículo</h2>
+      <p>Qué se vende más y qué se vende menos, evaluando unidades e importe de venta.</p>
+    </div>
+    <div class="tabs" id="ventasTabs"></div>
+    <div class="panel" style="margin-bottom:18px"><h3 id="ventasChartTitle">Top 15 artículos por venta</h3><p class="ph">Importe de venta acumulado (MXN)</p><div class="chart-box tall"><canvas id="chVentas"></canvas></div></div>
+    <div class="tbl-2">
+      <div class="panel"><h3>Más vendidos (por venta)</h3><p class="ph">Mayor generación de ingreso</p><div id="tblVentasTop"></div></div>
+      <div class="panel"><h3>Menos vendidos (por venta)</h3><p class="ph">Productos de baja rotación</p><div id="tblVentasBottom"></div></div>
+    </div>
+  </section>
+
+  <!-- MARGENES -->
+  <section id="margenes" class="fade">
+    <div class="sec-head">
+      <span class="sec-num">08</span>
+      <h2>Márgenes de Utilidad</h2>
+      <p>Artículos más y menos rentables (consolidado). Utilidad estimada = venta − (unidades vendidas × costo unitario de compra).</p>
+    </div>
+    <div class="grid-2b" style="margin-bottom:18px">
+      <div class="panel"><h3>Top 15 artículos por utilidad</h3><p class="ph">Mayor contribución a la ganancia</p><div class="chart-box tall"><canvas id="chMarginTop"></canvas></div></div>
+      <div class="panel"><h3>15 artículos con utilidad negativa / baja</h3><p class="ph">Posibles fugas de rentabilidad</p><div class="chart-box tall"><canvas id="chMarginBottom"></canvas></div></div>
+    </div>
+    <div class="tbl-2">
+      <div class="panel"><h3>Mayor utilidad</h3><p class="ph">Productos estrella</p><div id="tblMarginTop"></div></div>
+      <div class="panel"><h3>Menor utilidad</h3><p class="ph">Revisar precio o costo</p><div id="tblMarginBottom"></div></div>
+    </div>
+  </section>
+
+  <!-- DEVOLUCIONES -->
+  <section id="devoluciones" class="fade">
+    <div class="sec-head">
+      <span class="sec-num">09</span>
+      <h2>Devoluciones de Ventas</h2>
+      <p>Impacto de las devoluciones sobre la venta bruta por negocio.</p>
+    </div>
+    <div class="kpi-grid" id="kpiDev"></div>
+    <div class="grid-2" style="margin-top:18px">
+      <div class="panel"><h3>Devoluciones por negocio</h3><p class="ph">Monto devuelto (MXN)</p><div class="chart-box short"><canvas id="chDevStore"></canvas></div></div>
+      <div class="panel"><h3>Devoluciones por mes</h3><p class="ph">Monto consolidado devuelto</p><div class="chart-box short"><canvas id="chDevMonth"></canvas></div></div>
+    </div>
+    <div class="note"><span>ⓘ</span><div><b>Nota metodológica.</b> La utilidad mostrada es <b>rentabilidad bruta compra-venta</b>: ventas netas menos compras del periodo. No descuenta gastos operativos (renta, nómina, servicios) ni ajusta por variación de inventario, por lo que es un indicador de margen comercial, no de utilidad neta contable.</div></div>
+  </section>
+
+  <footer>
+    <div class="fbrand">DASHBOARD PARRILLA</div>
+    <div>Análisis generado a partir de reportes de compras, ventas por artículo, ventas globales y devoluciones · Periodo <span id="periodoFoot"></span>.</div>
+    <div style="margin-top:6px">Construido con HTML + Chart.js · Listo para GitHub Pages.</div>
+  </footer>
+</div>
+
+<script>
+const DATA = {"meta":{"periodo":"01 Enero 2026 – 30 Abril 2026","generado":"2026-05-22","stores":["PARRILLA1","PARRILLA2","PARRILLA3"]},"global":{"ventas":2459493.6,"compras":2104246.66,"devoluciones_monto":1344.83,"devoluciones_num":34,"ventas_netas":2458148.77,"utilidad":353902.11,"margen":14.4,"ratio_compra_venta":85.6,"tickets":52618,"ordenes":3992,"ticket_prom":46.74,"mensual":[{"mes":"Enero","ventas":612287.78,"compras":523003.39,"devoluciones":481.31,"ventas_netas":611806.47,"utilidad":88803.08,"tickets":13241,"margen":14.51},{"mes":"Febrero","ventas":575069.36,"compras":512821.41,"devoluciones":110.0,"ventas_netas":574959.36,"utilidad":62137.95,"tickets":12416,"margen":10.81},{"mes":"Marzo","ventas":675500.56,"compras":585652.93,"devoluciones":287.0,"ventas_netas":675213.56,"utilidad":89560.63,"tickets":14198,"margen":13.26},{"mes":"Abril","ventas":596635.9,"compras":482768.93,"devoluciones":466.52,"ventas_netas":596169.38,"utilidad":113400.45,"tickets":12763,"margen":19.02}],"markup":16.82,"ventas_dia":20668.01,"dias_venta":119,"skus_vendidos":1732,"skus_comprados":1431,"tasa_dev":0.065,"mejor_dia":{"fecha":"2026-03-01","monto":30590.21},"dow":[344725.05,324794.67,318312.06,333439.95,321887.1,387551.14,428783.63],"mom":[null,-6.1,17.5,-11.7],"ticket_dist":[{"rango":"< $20","count":12348,"pct":23.5},{"rango":"$20–50","count":22259,"pct":42.3},{"rango":"$50–100","count":13064,"pct":24.8},{"rango":"$100–200","count":4497,"pct":8.5},{"rango":"$200+","count":450,"pct":0.9}],"pareto":{"top10":18.4,"top20":27.5,"top50":43.0,"top100":57.2,"total_skus":1732,"curve":[{"x":1,"y":2.8},{"x":5,"y":11.5},{"x":10,"y":18.4},{"x":20,"y":27.5},{"x":30,"y":33.9},{"x":50,"y":43.0},{"x":75,"y":51.4},{"x":100,"y":57.2},{"x":150,"y":65.1},{"x":200,"y":70.9},{"x":300,"y":78.5},{"x":500,"y":87.5},{"x":1732,"y":100.0}]}},"por_negocio":{"PARRILLA1":{"ventas":1200599.65,"tickets":22802,"ticket_prom":52.65,"compras":1031216.55,"ordenes":1509,"devoluciones_monto":720.38,"devoluciones_num":17,"ventas_netas":1199879.27,"utilidad":168662.72,"margen":14.06,"ratio_compra_venta":85.94,"mensual":[{"mes":"Enero","ventas":304761.36,"compras":261078.36,"devoluciones":197.86,"ventas_netas":304563.5,"utilidad":43485.14,"tickets":5724,"margen":14.28},{"mes":"Febrero","ventas":280913.25,"compras":258139.05,"devoluciones":100.0,"ventas_netas":280813.25,"utilidad":22674.2,"tickets":5362,"margen":8.07},{"mes":"Marzo","ventas":328793.64,"compras":273579.43,"devoluciones":198.0,"ventas_netas":328595.64,"utilidad":55016.21,"tickets":6339,"margen":16.74},{"mes":"Abril","ventas":286131.4,"compras":238419.71,"devoluciones":224.52,"ventas_netas":285906.88,"utilidad":47487.17,"tickets":5377,"margen":16.61}],"markup":16.36,"ventas_dia":10089.07,"dias_venta":119,"skus_vendidos":1433,"skus_comprados":1181,"tasa_dev":0.075,"mejor_dia":{"fecha":"2026-03-16","monto":15177.24},"dow":[173685.3,155183.95,154287.62,165032.37,155378.54,187404.41,209627.46],"mom":[null,-7.8,17.0,-13.0],"ticket_dist":[{"rango":"< $20","count":4426,"pct":19.4},{"rango":"$20–50","count":9094,"pct":39.9},{"rango":"$50–100","count":6446,"pct":28.3},{"rango":"$100–200","count":2595,"pct":11.4},{"rango":"$200+","count":241,"pct":1.1}]},"PARRILLA2":{"ventas":828483.29,"tickets":19366,"ticket_prom":42.78,"compras":717524.03,"ordenes":1320,"devoluciones_monto":439.45,"devoluciones_num":10,"ventas_netas":828043.84,"utilidad":110519.81,"margen":13.35,"ratio_compra_venta":86.65,"mensual":[{"mes":"Enero","ventas":203040.84,"compras":179571.62,"devoluciones":214.45,"ventas_netas":202826.39,"utilidad":23254.77,"tickets":4865,"margen":11.47},{"mes":"Febrero","ventas":201373.96,"compras":180322.74,"devoluciones":0.0,"ventas_netas":201373.96,"utilidad":21051.22,"tickets":4743,"margen":10.45},{"mes":"Marzo","ventas":232939.65,"compras":208830.22,"devoluciones":30.0,"ventas_netas":232909.65,"utilidad":24079.43,"tickets":5158,"margen":10.34},{"mes":"Abril","ventas":191128.84,"compras":148799.45,"devoluciones":195.0,"ventas_netas":190933.84,"utilidad":42134.39,"tickets":4600,"margen":22.07}],"markup":15.4,"ventas_dia":7021.04,"dias_venta":118,"skus_vendidos":1179,"skus_comprados":997,"tasa_dev":0.052,"mejor_dia":{"fecha":"2026-03-01","monto":11596.37},"dow":[121109.62,105890.69,107965.59,109922.03,106709.86,130577.27,146308.23],"mom":[null,-0.8,15.7,-17.9],"ticket_dist":[{"rango":"< $20","count":5028,"pct":26.0},{"rango":"$20–50","count":8416,"pct":43.5},{"rango":"$50–100","count":4512,"pct":23.3},{"rango":"$100–200","count":1282,"pct":6.6},{"rango":"$200+","count":128,"pct":0.7}]},"PARRILLA3":{"ventas":430410.66,"tickets":10450,"ticket_prom":41.19,"compras":355506.08,"ordenes":1163,"devoluciones_monto":185.0,"devoluciones_num":7,"ventas_netas":430225.66,"utilidad":74719.58,"margen":17.37,"ratio_compra_venta":82.63,"mensual":[{"mes":"Enero","ventas":104485.58,"compras":82353.41,"devoluciones":69.0,"ventas_netas":104416.58,"utilidad":22063.17,"tickets":2652,"margen":21.13},{"mes":"Febrero","ventas":92782.15,"compras":74359.62,"devoluciones":10.0,"ventas_netas":92772.15,"utilidad":18412.53,"tickets":2311,"margen":19.85},{"mes":"Marzo","ventas":113767.27,"compras":103243.28,"devoluciones":59.0,"ventas_netas":113708.27,"utilidad":10464.99,"tickets":2701,"margen":9.2},{"mes":"Abril","ventas":119375.66,"compras":95549.77,"devoluciones":47.0,"ventas_netas":119328.66,"utilidad":23778.89,"tickets":2786,"margen":19.93}],"markup":21.02,"ventas_dia":3710.44,"dias_venta":116,"skus_vendidos":983,"skus_comprados":737,"tasa_dev":0.067,"mejor_dia":{"fecha":"2026-03-22","monto":6143.0},"dow":[49930.13,63720.03,56058.85,58485.55,59798.7,69569.46,72847.94],"mom":[null,-11.2,22.6,4.9],"ticket_dist":[{"rango":"< $20","count":2894,"pct":27.7},{"rango":"$20–50","count":4749,"pct":45.4},{"rango":"$50–100","count":2106,"pct":20.2},{"rango":"$100–200","count":620,"pct":5.9},{"rango":"$200+","count":81,"pct":0.8}]}},"articulos":{"consolidado":{"compras_top_unidades":[{"codigo":"TELERAPAZ","desc":"PAN TELERA LA PAZ","umed":"PIEZAS","unidades":5490.0,"costo_total":24707.36},{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","umed":"Pieza","unidades":4642.0,"costo_total":27440.3},{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":3817.5,"costo_total":76350.0},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":2335.54,"costo_total":57731.08},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":2252.0,"costo_total":33105.95},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":2026.0,"costo_total":42546.0},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","umed":"PIEZA","unidades":1632.0,"costo_total":38839.48},{"codigo":"SFS","desc":"SALCHICHA FUD SUELTA","umed":"PIEZA","unidades":1550.08,"costo_total":5330.48},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":1496.0,"costo_total":54136.4},{"codigo":"75004699","desc":"COCA COLA 500 ML VIDRIO","umed":"PIEZA","unidades":1307.0,"costo_total":17154.38},{"codigo":"TMS","desc":"TORTILLA DE MASECA","umed":"PIEZA","unidades":1186.5,"costo_total":24873.4},{"codigo":"PRS","desc":"CIGARRO PRESIDENTE SUELTO","umed":"Pieza","unidades":1170.0,"costo_total":2470.0},{"codigo":"75007614","desc":"COCA COLA 600 ML","umed":"PIEZA","unidades":1104.0,"costo_total":21244.0},{"codigo":"75005283","desc":"CUARTITO XX","umed":"Pieza","unidades":1080.0,"costo_total":6922.8},{"codigo":"7501259620023","desc":"QUEEN 1LT","umed":"PIEZA","unidades":1050.0,"costo_total":30246.9}],"compras_top_monto":[{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":3817.5,"costo_total":76350.0},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":2335.54,"costo_total":57731.08},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":1496.0,"costo_total":54136.4},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":2026.0,"costo_total":42546.0},{"codigo":"QCOVA","desc":"QUESO COVARRUBIAS","umed":"KILOGRAMO","unidades":254.81,"costo_total":40212.77},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","umed":"PIEZA","unidades":1632.0,"costo_total":38839.48},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":2252.0,"costo_total":33105.95},{"codigo":"7501259620023","desc":"QUEEN 1LT","umed":"PIEZA","unidades":1050.0,"costo_total":30246.9},{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","umed":"Pieza","unidades":4642.0,"costo_total":27440.3},{"codigo":"TMS","desc":"TORTILLA DE MASECA","umed":"PIEZA","unidades":1186.5,"costo_total":24873.4},{"codigo":"7501020557695","desc":"QUEEN GALON","umed":"PIEZA","unidades":472.0,"costo_total":24854.4},{"codigo":"TELERAPAZ","desc":"PAN TELERA LA PAZ","umed":"PIEZAS","unidades":5490.0,"costo_total":24707.36},{"codigo":"QEXC","desc":"QUESO EXCELSIOR","umed":"KILOGRAMO","unidades":150.81,"costo_total":22190.12},{"codigo":"CIEL","desc":"GARRAFON CIEL","umed":"PIEZA","unidades":443.0,"costo_total":21264.0},{"codigo":"75007614","desc":"COCA COLA 600 ML","umed":"PIEZA","unidades":1104.0,"costo_total":21244.0}],"compras_bottom_monto":[{"codigo":"7501011181762","desc":"BE LIGHT TORONJA 1.5LT","umed":"Pieza","unidades":6.0,"costo_total":0.01},{"codigo":"7622202807077","desc":"HALLS MUNDIAL","umed":"Pieza","unidades":2.0,"costo_total":9.0},{"codigo":"7622210573087","desc":"TANG DE UVA 13GR","umed":"Pieza","unidades":2.0,"costo_total":11.38},{"codigo":"7506475102476","desc":"GERBER DURAZNO","umed":"PIEZA","unidades":1.0,"costo_total":11.8},{"codigo":"GUINDO","desc":"GUINDO","umed":"Pieza","unidades":0.31,"costo_total":13.95},{"codigo":"7501030463740","desc":"DELICIOSA SABOR VAINILLA 130GR","umed":"PIEZA","unidades":1.0,"costo_total":16.8},{"codigo":"75073282","desc":"BUBBALO TUTI FRUTTI","umed":"Pieza","unidades":19.0,"costo_total":17.06},{"codigo":"7503030374736","desc":"PALETA CUPIDO 14GR","umed":"Pieza","unidades":8.0,"costo_total":17.4},{"codigo":"75039127","desc":"CHUPADEDO 16GR","umed":"Pieza","unidades":8.0,"costo_total":17.4},{"codigo":"759686272682","desc":"PALETA PINTA AZUL","umed":"Pieza","unidades":8.0,"costo_total":17.4},{"codigo":"010248765128","desc":"SOPA YEMINA ESTRELLA 2 200G","umed":"PIEZA","unidades":2.0,"costo_total":18.0},{"codigo":"7506192504416","desc":"SAVILE SHAMPOO ACEITE DE ARGAN 180 ML","umed":"Pieza","unidades":1.0,"costo_total":18.0},{"codigo":"036731107060","desc":"GATORADE PONCHE DE FRUTAS 750ML","umed":"Pieza","unidades":1.0,"costo_total":19.21},{"codigo":"7501032300098","desc":"DANONE LICUADO NUEZ CON CEREALES 435GR","umed":"Pieza","unidades":1.0,"costo_total":21.1},{"codigo":"7501008065785","desc":"RICE TREATS CHOCO MALVAVISCO MEGA 34GR","umed":"Pieza","unidades":4.0,"costo_total":21.6}],"ventas_top_unidades":[{"codigo":"TELERAPAZ","desc":"PAN TELERA LA PAZ","umed":"PIEZAS","unidades":5304.0,"venta":26520.0},{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","umed":"Pieza","unidades":4488.0,"venta":39966.0},{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":3040.61,"venta":69933.99},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":2080.83,"venta":62424.99},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":2010.0,"venta":32160.0},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":1867.67,"venta":46691.85},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","umed":"PIEZA","unidades":1654.0,"venta":44658.0},{"codigo":"SFS","desc":"SALCHICHA FUD SUELTA","umed":"PIEZA","unidades":1579.16,"venta":6316.64},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":1441.0,"venta":59081.0},{"codigo":"PRS","desc":"CIGARRO PRESIDENTE SUELTO","umed":"Pieza","unidades":1233.0,"venta":3699.0},{"codigo":"75004699","desc":"COCA COLA 500 ML VIDRIO","umed":"PIEZA","unidades":1186.0,"venta":17790.0},{"codigo":"75005283","desc":"CUARTITO XX","umed":"Pieza","unidades":1122.0,"venta":8320.0},{"codigo":"75007614","desc":"COCA COLA 600 ML","umed":"PIEZA","unidades":1117.0,"venta":24574.0},{"codigo":"7501061696971","desc":"INDIO LATA 355ML","umed":"Pieza","unidades":1063.0,"venta":13806.0},{"codigo":"75019020","desc":"CUARTITOS TECATE","umed":"PIEZA","unidades":1044.0,"venta":7541.0}],"ventas_top_monto":[{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":3040.61,"venta":69933.99},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":2080.83,"venta":62424.99},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":1441.0,"venta":59081.0},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":1867.67,"venta":46691.85},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","umed":"PIEZA","unidades":1654.0,"venta":44658.0},{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","umed":"Pieza","unidades":4488.0,"venta":39966.0},{"codigo":"QCOVA","desc":"QUESO COVARRUBIAS","umed":"KILOGRAMO","unidades":232.57,"venta":39560.49},{"codigo":"7501259620023","desc":"QUEEN 1LT","umed":"PIEZA","unidades":1016.0,"venta":32512.0},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":2010.0,"venta":32160.0},{"codigo":"TELERAPAZ","desc":"PAN TELERA LA PAZ","umed":"PIEZAS","unidades":5304.0,"venta":26520.0},{"codigo":"7501020557695","desc":"QUEEN GALON","umed":"PIEZA","unidades":457.0,"venta":25592.0},{"codigo":"QEXC","desc":"QUESO EXCELSIOR","umed":"KILOGRAMO","unidades":144.25,"venta":24810.7},{"codigo":"75007614","desc":"COCA COLA 600 ML","umed":"PIEZA","unidades":1117.0,"venta":24574.0},{"codigo":"CIEL","desc":"GARRAFON CIEL","umed":"PIEZA","unidades":438.0,"venta":23652.0},{"codigo":"MARY","desc":"MARELY","umed":"PIEZA","unidades":881.0,"venta":22906.0}],"ventas_bottom_monto":[{"codigo":"75039158","desc":"PICA GOMA 6G","umed":"PIEZA","unidades":1.0,"venta":1.0},{"codigo":"50","desc":"BARRENO","umed":"Pieza","unidades":1.0,"venta":2.0},{"codigo":"ACIDU","desc":"PALETA ACIDITA","umed":"Pieza","unidades":1.0,"venta":2.0},{"codigo":"75075149","desc":"NUCITA CHOCOVAILLA 14GR","umed":"Pieza","unidades":1.0,"venta":3.0},{"codigo":"75075163","desc":"NUCITA TRISABOR 14GR","umed":"Pieza","unidades":1.0,"venta":3.0},{"codigo":"MILLO","desc":"TOMILLO","umed":"Pieza","unidades":1.0,"venta":3.0},{"codigo":"POPS","desc":"POPOTE SUELTO","umed":"Pieza","unidades":1.0,"venta":3.0},{"codigo":"MAZ","desc":"MAZ","umed":"PIEZA","unidades":1.0,"venta":4.0},{"codigo":"TEF","desc":"TABCIN EFERVECENTE","umed":"Pieza","unidades":1.0,"venta":4.0},{"codigo":"7501040002335","desc":"JAMON CHIMEX COCIDO 162G","umed":"PIEZA","unidades":0.15,"venta":4.8},{"codigo":"724869007214","desc":"MAZAPAN 21GR","umed":"Pieza","unidades":1.0,"venta":5.0},{"codigo":"757528034313","desc":"RELLERINDO SABOR MANGO 11GR","umed":"Pieza","unidades":2.0,"venta":5.0},{"codigo":"7622202232428","desc":"PANDITAS NAVIDAD 15GR","umed":"Pieza","unidades":1.0,"venta":5.0},{"codigo":"790203019113","desc":"DEDOS 20GR","umed":"Pieza","unidades":1.0,"venta":5.0},{"codigo":"43","desc":"BOLA DE HUMO","umed":"Pieza","unidades":2.0,"venta":6.0}],"margen_top":[{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","venta":39966.0,"costo_estimado":26529.96,"utilidad":13436.04,"margen_pct":33.62},{"codigo":"HUEV","desc":"HUEVO","venta":62424.99,"costo_estimado":51435.09,"utilidad":10989.9,"margen_pct":17.6},{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","venta":69933.99,"costo_estimado":60812.14,"utilidad":9121.85,"margen_pct":13.04},{"codigo":"FGR","desc":"FRIJOLES","venta":46691.85,"costo_estimado":39221.15,"utilidad":7470.7,"margen_pct":16.0},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","venta":59081.0,"costo_estimado":52146.09,"utilidad":6934.91,"margen_pct":11.74},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","venta":44658.0,"costo_estimado":39363.05,"utilidad":5294.95,"margen_pct":11.86},{"codigo":"DESEB","desc":"DESEBRADA","venta":16598.09,"costo_estimado":12087.61,"utilidad":4510.48,"margen_pct":27.17},{"codigo":"7501049912215","desc":"CAGUAMA XX","venta":20225.0,"costo_estimado":15877.17,"utilidad":4347.83,"margen_pct":21.5},{"codigo":"7501061696988","desc":"INDIO 16 OZ","venta":15625.0,"costo_estimado":11991.15,"utilidad":3633.85,"margen_pct":23.26},{"codigo":"QEXC","desc":"QUESO EXCELSIOR","venta":24810.7,"costo_estimado":21224.64,"utilidad":3586.06,"margen_pct":14.45},{"codigo":"7501049967062","desc":"SOL CLAMATO 16OZ","venta":11934.0,"costo_estimado":8358.59,"utilidad":3575.41,"margen_pct":29.96},{"codigo":"7501061668930","desc":"CAGUAMA TECATE ROJA","venta":6439.0,"costo_estimado":2934.08,"utilidad":3504.92,"margen_pct":54.43},{"codigo":"7501061669289","desc":"TECATE LIGHT 16 OZ","venta":14300.0,"costo_estimado":10974.3,"utilidad":3325.7,"margen_pct":23.26},{"codigo":"8934635000178","desc":"PRESIDENTE 20C","venta":12240.0,"costo_estimado":8993.74,"utilidad":3246.26,"margen_pct":26.52},{"codigo":"7501259620023","desc":"QUEEN 1LT","venta":32512.0,"costo_estimado":29267.48,"utilidad":3244.52,"margen_pct":9.98}],"margen_bottom":[{"codigo":"7503024416138","desc":"AMSTEL ULTRA LATA 355ML","venta":10206.0,"costo_estimado":14079.42,"utilidad":-3873.42,"margen_pct":-37.95},{"codigo":"MS","desc":"MAYONESA STAR VALUE 3.4K","venta":2146.66,"costo_estimado":3193.72,"utilidad":-1047.06,"margen_pct":-48.78},{"codigo":"7501055311439","desc":"SPRITE ZERO 250 ML","venta":88.0,"costo_estimado":823.36,"utilidad":-735.36,"margen_pct":-835.64},{"codigo":"7501005110242","desc":"MAIZENA FECULA DE MAIZ","venta":440.0,"costo_estimado":762.51,"utilidad":-322.51,"margen_pct":-73.3},{"codigo":"PC","desc":"PEDIGREE CACHORRO SUELTO","venta":13581.66,"costo_estimado":13851.35,"utilidad":-269.69,"margen_pct":-1.99},{"codigo":"TAM","desc":"TAMPAX SUELTO","venta":6.12,"costo_estimado":244.8,"utilidad":-238.68,"margen_pct":-3900.0},{"codigo":"7501055328338","desc":"FRESCA 400ML","venta":285.0,"costo_estimado":498.75,"utilidad":-213.75,"margen_pct":-75.0},{"codigo":"CC","desc":"CHILES CURTIDOS SUELTOS","venta":226.75,"costo_estimado":437.63,"utilidad":-210.88,"margen_pct":-93.0},{"codigo":"CATS","desc":"MI CATSUP 4K","venta":112.26,"costo_estimado":314.33,"utilidad":-202.07,"margen_pct":-180.0},{"codigo":"7501119500366","desc":"MICRODYN 15ML","venta":275.0,"costo_estimado":374.0,"utilidad":-99.0,"margen_pct":-36.0},{"codigo":"7501369200115","desc":"ESTOMAQUIL","venta":115.0,"costo_estimado":207.0,"utilidad":-92.0,"margen_pct":-80.0},{"codigo":"7501639303638","desc":"QUESO PARA NACHOS 1KG","venta":157.5,"costo_estimado":245.7,"utilidad":-88.2,"margen_pct":-56.0},{"codigo":"7500810005064","desc":"CACAHUATE KIYAKIS CLASICO 120G","venta":1488.0,"costo_estimado":1562.4,"utilidad":-74.4,"margen_pct":-5.0},{"codigo":"FR250","desc":"FRESCA 250ML","venta":253.0,"costo_estimado":327.03,"utilidad":-74.03,"margen_pct":-29.26},{"codigo":"7502226817170","desc":"SKITTLES ORIGINAL 54.4GR","venta":90.0,"costo_estimado":160.0,"utilidad":-70.0,"margen_pct":-77.78}],"totales":{"articulos_comprados":1431,"articulos_vendidos":1732,"costo_total":2103776.66,"venta_total":2458966.11}},"por_negocio":{"PARRILLA1":{"compras_top_monto":[{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":1585.0,"costo_total":31700.0},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":1193.0,"costo_total":29288.62},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":728.0,"costo_total":26344.4},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":1151.0,"costo_total":24171.0},{"codigo":"QCOVA","desc":"QUESO COVARRUBIAS","umed":"KILOGRAMO","unidades":113.89,"costo_total":17955.43},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":1134.0,"costo_total":16670.55},{"codigo":"7501020557695","desc":"QUEEN GALON","umed":"PIEZA","unidades":310.0,"costo_total":16337.0},{"codigo":"7501259620023","desc":"QUEEN 1LT","umed":"PIEZA","unidades":529.0,"costo_total":15247.4},{"codigo":"QEXC","desc":"QUESO EXCELSIOR","umed":"KILOGRAMO","unidades":90.92,"costo_total":13505.33},{"codigo":"TMS","desc":"TORTILLA DE MASECA","umed":"PIEZA","unidades":632.0,"costo_total":13273.0}],"compras_top_unidades":[{"codigo":"TELERAPAZ","desc":"PAN TELERA LA PAZ","umed":"PIEZAS","unidades":2106.0,"costo_total":9477.36},{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","umed":"Pieza","unidades":1765.0,"costo_total":10864.75},{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":1585.0,"costo_total":31700.0},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":1193.0,"costo_total":29288.62},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":1151.0,"costo_total":24171.0},{"codigo":"SFS","desc":"SALCHICHA FUD SUELTA","umed":"PIEZA","unidades":1142.0,"costo_total":3813.96},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":1134.0,"costo_total":16670.55},{"codigo":"PEPI","desc":"PEPINO","umed":"KILOGRAMO","unidades":1002.41,"costo_total":1932.37},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":728.0,"costo_total":26344.4},{"codigo":"TMS","desc":"TORTILLA DE MASECA","umed":"PIEZA","unidades":632.0,"costo_total":13273.0}],"ventas_top_monto":[{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":1045.28,"venta":31358.33},{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":1274.07,"venta":29303.66},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":707.0,"venta":28987.0},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":1070.67,"venta":26766.85},{"codigo":"QCOVA","desc":"QUESO COVARRUBIAS","umed":"KILOGRAMO","unidades":101.28,"venta":17222.91},{"codigo":"7501020557695","desc":"QUEEN GALON","umed":"PIEZA","unidades":302.0,"venta":16912.0},{"codigo":"7501259620023","desc":"QUEEN 1LT","umed":"PIEZA","unidades":512.0,"venta":16384.0},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":1002.0,"venta":16032.0},{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","umed":"Pieza","unidades":1752.0,"venta":15533.0},{"codigo":"QEXC","desc":"QUESO EXCELSIOR","umed":"KILOGRAMO","unidades":88.63,"venta":15244.44}],"ventas_top_unidades":[{"codigo":"TELERAPAZ","desc":"PAN TELERA LA PAZ","umed":"PIEZAS","unidades":2055.0,"venta":10275.0},{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","umed":"Pieza","unidades":1752.0,"venta":15533.0},{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":1274.07,"venta":29303.66},{"codigo":"SFS","desc":"SALCHICHA FUD SUELTA","umed":"PIEZA","unidades":1100.0,"venta":4400.0},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":1070.67,"venta":26766.85},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":1045.28,"venta":31358.33},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":1002.0,"venta":16032.0},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":707.0,"venta":28987.0},{"codigo":"MINIPAN","desc":"PAN MINI","umed":"Pieza","unidades":564.0,"venta":5076.0},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","umed":"PIEZA","unidades":547.0,"venta":14769.0}],"n_compras":1181,"n_ventas":1433},"PARRILLA2":{"compras_top_monto":[{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":1596.0,"costo_total":31920.0},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":600.0,"costo_total":21712.5},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","umed":"PIEZA","unidades":756.0,"costo_total":18143.98},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":722.2,"costo_total":17900.14},{"codigo":"TELERAPAZ","desc":"PAN TELERA LA PAZ","umed":"PIEZAS","unidades":2934.0,"costo_total":13205.0},{"codigo":"7501259620023","desc":"QUEEN 1LT","umed":"PIEZA","unidades":392.0,"costo_total":11256.0},{"codigo":"QCOVA","desc":"QUESO COVARRUBIAS","umed":"KILOGRAMO","unidades":68.9,"costo_total":10793.72},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":716.0,"costo_total":10526.0},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":471.0,"costo_total":9891.0},{"codigo":"MARY","desc":"MARELY","umed":"PIEZA","unidades":406.0,"costo_total":9338.0}],"compras_top_unidades":[{"codigo":"TELERAPAZ","desc":"PAN TELERA LA PAZ","umed":"PIEZAS","unidades":2934.0,"costo_total":13205.0},{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":1596.0,"costo_total":31920.0},{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","umed":"Pieza","unidades":1240.0,"costo_total":7065.0},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","umed":"PIEZA","unidades":756.0,"costo_total":18143.98},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":722.2,"costo_total":17900.14},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":716.0,"costo_total":10526.0},{"codigo":"PRS","desc":"CIGARRO PRESIDENTE SUELTO","umed":"Pieza","unidades":660.0,"costo_total":1378.0},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":600.0,"costo_total":21712.5},{"codigo":"JALA","desc":"JALAPEÑO","umed":"KILOGRAMO","unidades":575.98,"costo_total":836.26},{"codigo":"75004699","desc":"COCA COLA 500 ML VIDRIO","umed":"PIEZA","unidades":528.0,"costo_total":6930.0}],"ventas_top_monto":[{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":1283.56,"venta":29521.88},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":574.0,"venta":23534.0},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","umed":"PIEZA","unidades":779.0,"venta":21033.0},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":646.72,"venta":19401.7},{"codigo":"TELERAPAZ","desc":"PAN TELERA LA PAZ","umed":"PIEZAS","unidades":2810.0,"venta":14050.0},{"codigo":"7501259620023","desc":"QUEEN 1LT","umed":"PIEZA","unidades":385.0,"venta":12320.0},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":450.0,"venta":11250.0},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":656.0,"venta":10496.0},{"codigo":"MARY","desc":"MARELY","umed":"PIEZA","unidades":395.0,"venta":10270.0},{"codigo":"QCOVA","desc":"QUESO COVARRUBIAS","umed":"KILOGRAMO","unidades":60.15,"venta":10226.68}],"ventas_top_unidades":[{"codigo":"TELERAPAZ","desc":"PAN TELERA LA PAZ","umed":"PIEZAS","unidades":2810.0,"venta":14050.0},{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":1283.56,"venta":29521.88},{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","umed":"Pieza","unidades":1144.0,"venta":10196.0},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","umed":"PIEZA","unidades":779.0,"venta":21033.0},{"codigo":"PRS","desc":"CIGARRO PRESIDENTE SUELTO","umed":"Pieza","unidades":688.0,"venta":2064.0},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":656.0,"venta":10496.0},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":646.72,"venta":19401.7},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":574.0,"venta":23534.0},{"codigo":"75019020","desc":"CUARTITOS TECATE","umed":"PIEZA","unidades":554.0,"venta":3996.0},{"codigo":"75004699","desc":"COCA COLA 500 ML VIDRIO","umed":"PIEZA","unidades":523.0,"venta":7845.0}],"n_compras":997,"n_ventas":1179},"PARRILLA3":{"compras_top_monto":[{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":636.5,"costo_total":12730.0},{"codigo":"QCOVA","desc":"QUESO COVARRUBIAS","umed":"KILOGRAMO","unidades":72.02,"costo_total":11463.62},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":420.34,"costo_total":10542.32},{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","umed":"Pieza","unidades":1637.0,"costo_total":9510.55},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":404.0,"costo_total":8484.0},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","umed":"PIEZA","unidades":324.0,"costo_total":7654.5},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":168.0,"costo_total":6079.5},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":402.0,"costo_total":5909.4},{"codigo":"75007614","desc":"COCA COLA 600 ML","umed":"PIEZA","unidades":264.0,"costo_total":5082.0},{"codigo":"75068738","desc":"MALBORO BLANCO 20'S","umed":"PIEZA","unidades":50.0,"costo_total":4519.78}],"compras_top_unidades":[{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","umed":"Pieza","unidades":1637.0,"costo_total":9510.55},{"codigo":"TS","desc":"TIME  DEMI SUELTO","umed":"Pieza","unidades":659.0,"costo_total":1108.5},{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":636.5,"costo_total":12730.0},{"codigo":"TELERAPAZ","desc":"PAN TELERA LA PAZ","umed":"PIEZAS","unidades":450.0,"costo_total":2025.0},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":420.34,"costo_total":10542.32},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":404.0,"costo_total":8484.0},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":402.0,"costo_total":5909.4},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","umed":"PIEZA","unidades":324.0,"costo_total":7654.5},{"codigo":"75004699","desc":"COCA COLA 500 ML VIDRIO","umed":"PIEZA","unidades":299.0,"costo_total":3924.38},{"codigo":"MANVER","desc":"MANZANA VERDE","umed":"KILOGRAMO","unidades":298.39,"costo_total":164.14}],"ventas_top_monto":[{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","umed":"Pieza","unidades":1592.0,"venta":14237.0},{"codigo":"QCOVA","desc":"QUESO COVARRUBIAS","umed":"KILOGRAMO","unidades":71.15,"venta":12110.9},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":388.83,"venta":11664.96},{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":482.98,"venta":11108.45},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","umed":"PIEZA","unidades":328.0,"venta":8856.0},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":347.0,"venta":8675.0},{"codigo":"7501055310227","desc":"COCA COLA 2.5 LR","umed":"PIEZA","unidades":160.0,"venta":6560.0},{"codigo":"75007614","desc":"COCA COLA 600 ML","umed":"PIEZA","unidades":259.0,"venta":5698.0},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":352.0,"venta":5632.0},{"codigo":"TMS","desc":"TORTILLA DE MASECA","umed":"PIEZA","unidades":210.86,"venta":5060.64}],"ventas_top_unidades":[{"codigo":"CS","desc":"CIGARRO MALBORO SUELTO","umed":"Pieza","unidades":1592.0,"venta":14237.0},{"codigo":"TS","desc":"TIME  DEMI SUELTO","umed":"Pieza","unidades":610.0,"venta":2378.0},{"codigo":"TMZ","desc":"TORTILLA DE MAIZ","umed":"PIEZA","unidades":482.98,"venta":11108.45},{"codigo":"TELERAPAZ","desc":"PAN TELERA LA PAZ","umed":"PIEZAS","unidades":439.0,"venta":2195.0},{"codigo":"HUEV","desc":"HUEVO","umed":"KILOGRAMO","unidades":388.83,"venta":11664.96},{"codigo":"DULCEPAZ","desc":"PAN DULCE LA PAZ","umed":"PIEZAS","unidades":352.0,"venta":5632.0},{"codigo":"FGR","desc":"FRIJOLES","umed":"PIEZA","unidades":347.0,"venta":8675.0},{"codigo":"7501055300594","desc":"COCA COLA 1.5 LR","umed":"PIEZA","unidades":328.0,"venta":8856.0},{"codigo":"75004699","desc":"COCA COLA 500 ML VIDRIO","umed":"PIEZA","unidades":266.0,"venta":3990.0},{"codigo":"75015541","desc":"CUARTITO INDIO","umed":"PIEZA","unidades":264.0,"venta":1886.0}],"n_compras":737,"n_ventas":983}}}};
+const PCOLOR = {PARRILLA1:'#ff6b2c', PARRILLA2:'#f6c14b', PARRILLA3:'#5fb3c4'};
+const PNAME  = {PARRILLA1:'Parrilla 1', PARRILLA2:'Parrilla 2', PARRILLA3:'Parrilla 3'};
+const STORES = DATA.meta.stores;
+const fmtMXN = n => '$'+Math.round(n).toLocaleString('es-MX');
+const fmtMXNc = n => '$'+n.toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtN = n => n.toLocaleString('es-MX',{maximumFractionDigits:n%1?1:0});
+const fmtP = n => n.toFixed(1)+'%';
+
+document.getElementById('periodo').textContent = DATA.meta.periodo;
+document.getElementById('periodoFoot').textContent = DATA.meta.periodo;
+
+/* ---- Chart.js global theme ---- */
+Chart.defaults.color = '#b59f87';
+Chart.defaults.font.family = "'Sora', sans-serif";
+Chart.defaults.font.size = 11;
+const GRID = 'rgba(74,58,42,.5)';
+const tooltipCfg = {
+  backgroundColor:'#2a2118', borderColor:'#4a3a2a', borderWidth:1, padding:11,
+  titleColor:'#f4ebdd', bodyColor:'#f4ebdd', titleFont:{family:"'Bricolage Grotesque'",weight:700},
+  bodyFont:{family:"'Space Mono'"}, cornerRadius:9, displayColors:true, boxPadding:4
+};
+
+/* ---- KPI GLOBAL ---- */
+const g = DATA.global;
+const kpis = [
+  {lbl:'Ventas Brutas', val:fmtMXN(g.ventas), sub:`${fmtN(g.tickets)} tickets · prom ${fmtMXNc(g.ticket_prom)}`, tag:''},
+  {lbl:'Compras', val:fmtMXN(g.compras), sub:`${fmtN(g.ordenes)} órdenes de compra`, tag:`<span class="tag neu">${fmtP(g.ratio_compra_venta)} de la venta</span>`},
+  {lbl:'Ventas Netas', val:fmtMXN(g.ventas_netas), sub:`Devoluciones ${fmtMXN(g.devoluciones_monto)}`, tag:''},
+  {lbl:'Utilidad Bruta', val:fmtMXN(g.utilidad), sub:`Margen comercial`, tag:`<span class="tag up">▲ ${fmtP(g.margen)}</span>`},
+];
+document.getElementById('kpiGlobal').innerHTML = kpis.map(k=>`
+  <div class="kpi"><div class="lbl">${k.lbl}</div><div class="val">${k.val}</div>
+  <div class="sub">${k.sub} ${k.tag}</div></div>`).join('');
+
+/* ---- KPI DEV ---- */
+const totalDev = g.devoluciones_monto, devPct = totalDev/g.ventas*100;
+document.getElementById('kpiDev').innerHTML = [
+  {lbl:'Devoluciones (monto)', val:fmtMXNc(g.devoluciones_monto), sub:`${g.devoluciones_num} eventos en el periodo`},
+  {lbl:'% sobre venta bruta', val:fmtP(devPct), sub:'Impacto muy bajo'},
+  {lbl:'Ticket dev. promedio', val:fmtMXNc(g.devoluciones_monto/g.devoluciones_num), sub:'Por devolución'},
+].map(k=>`<div class="kpi"><div class="lbl">${k.lbl}</div><div class="val">${k.val}</div><div class="sub">${k.sub}</div></div>`).join('');
+
+/* ---- STORE CARDS ---- */
+document.getElementById('storeCards').innerHTML = STORES.map((s,i)=>{
+  const b = DATA.por_negocio[s];
+  return `<div class="store-card s${i+1}">
+    <div class="badge"><span class="swatch" style="background:${PCOLOR[s]}"></span>${PNAME[s]}</div>
+    <div class="store-rows">
+      <div class="srow"><span class="k">Ventas brutas</span><span class="v">${fmtMXN(b.ventas)}</span></div>
+      <div class="srow"><span class="k">Compras</span><span class="v">${fmtMXN(b.compras)}</span></div>
+      <div class="srow"><span class="k">Ventas netas</span><span class="v">${fmtMXN(b.ventas_netas)}</span></div>
+      <div class="srow"><span class="k">Tickets</span><span class="v">${fmtN(b.tickets)}</span></div>
+      <div class="srow"><span class="k">Ticket promedio</span><span class="v">${fmtMXNc(b.ticket_prom)}</span></div>
+      <div class="srow"><span class="k">Compra / venta</span><span class="v">${fmtP(b.ratio_compra_venta)}</span></div>
+      <div class="srow"><span class="k">Markup s/costo</span><span class="v">${fmtP(b.markup)}</span></div>
+      <div class="srow"><span class="k">Ventas / día</span><span class="v">${fmtMXN(b.ventas_dia)}</span></div>
+      <div class="srow"><span class="k">SKUs vendidos</span><span class="v">${fmtN(b.skus_vendidos)}</span></div>
+    </div>
+    <div class="store-util">
+      <div class="u-lbl">Utilidad bruta · Margen</div>
+      <div class="u-val" style="color:${PCOLOR[s]}">${fmtMXN(b.utilidad)} <span style="font-size:1rem;color:var(--muted)">/ ${fmtP(b.margen)}</span></div>
+    </div></div>`;
+}).join('');
+
+/* ============ CHARTS ============ */
+const ctx = id => document.getElementById(id).getContext('2d');
+
+/* Global bars */
+new Chart(ctx('chGlobalBars'),{type:'bar',
+  data:{labels:['Ventas netas','Compras','Utilidad bruta'],
+    datasets:[{data:[g.ventas_netas,g.compras,g.utilidad],
+      backgroundColor:['#ff6b2c','#7d6b58','#f6c14b'],borderRadius:8,maxBarThickness:90}]},
+  options:{plugins:{legend:{display:false},tooltip:{...tooltipCfg,callbacks:{label:c=>fmtMXNc(c.raw)}}},
+    scales:{y:{grid:{color:GRID},ticks:{callback:v=>'$'+(v/1000)+'k'}},x:{grid:{display:false}}}}});
+
+/* Share doughnut */
+new Chart(ctx('chShare'),{type:'doughnut',
+  data:{labels:STORES.map(s=>PNAME[s]),datasets:[{data:STORES.map(s=>DATA.por_negocio[s].ventas),
+    backgroundColor:STORES.map(s=>PCOLOR[s]),borderColor:'#211a13',borderWidth:3,hoverOffset:8}]},
+  options:{cutout:'62%',plugins:{legend:{position:'bottom',labels:{padding:14,usePointStyle:true,pointStyle:'rectRounded'}},
+    tooltip:{...tooltipCfg,callbacks:{label:c=>`${c.label}: ${fmtMXN(c.raw)} (${(c.raw/g.ventas*100).toFixed(1)}%)`}}}}});
+
+/* Global trend */
+const gm = g.mensual;
+new Chart(ctx('chGlobalTrend'),{
+  data:{labels:gm.map(m=>m.mes),datasets:[
+    {type:'bar',label:'Ventas',data:gm.map(m=>m.ventas),backgroundColor:'rgba(255,107,44,.85)',borderRadius:6,order:2},
+    {type:'bar',label:'Compras',data:gm.map(m=>m.compras),backgroundColor:'rgba(125,107,88,.85)',borderRadius:6,order:2},
+    {type:'line',label:'Utilidad',data:gm.map(m=>m.utilidad),borderColor:'#f6c14b',backgroundColor:'#f6c14b',
+      borderWidth:3,tension:.35,pointRadius:5,pointBackgroundColor:'#f6c14b',order:1}]},
+  options:{plugins:{legend:{position:'top',labels:{usePointStyle:true,pointStyle:'rectRounded',padding:14}},
+    tooltip:{...tooltipCfg,callbacks:{label:c=>`${c.dataset.label}: ${fmtMXNc(c.raw)}`}}},
+    scales:{y:{grid:{color:GRID},ticks:{callback:v=>'$'+(v/1000)+'k'}},x:{grid:{display:false}}}}});
+
+/* Store compare */
+new Chart(ctx('chStoreCompare'),{type:'bar',
+  data:{labels:STORES.map(s=>PNAME[s]),datasets:[
+    {label:'Ventas netas',data:STORES.map(s=>DATA.por_negocio[s].ventas_netas),backgroundColor:'#ff6b2c',borderRadius:6},
+    {label:'Compras',data:STORES.map(s=>DATA.por_negocio[s].compras),backgroundColor:'#7d6b58',borderRadius:6},
+    {label:'Utilidad',data:STORES.map(s=>DATA.por_negocio[s].utilidad),backgroundColor:'#f6c14b',borderRadius:6}]},
+  options:{plugins:{legend:{position:'top',labels:{usePointStyle:true,pointStyle:'rectRounded',padding:12}},
+    tooltip:{...tooltipCfg,callbacks:{label:c=>`${c.dataset.label}: ${fmtMXNc(c.raw)}`}}},
+    scales:{y:{grid:{color:GRID},ticks:{callback:v=>'$'+(v/1000)+'k'}},x:{grid:{display:false}}}}});
+
+/* Store margin */
+new Chart(ctx('chStoreMargin'),{type:'bar',
+  data:{labels:[...STORES.map(s=>PNAME[s]),'GLOBAL'],
+    datasets:[{data:[...STORES.map(s=>DATA.por_negocio[s].margen),g.margen],
+      backgroundColor:[...STORES.map(s=>PCOLOR[s]),'#f4ebdd'],borderRadius:7,maxBarThickness:60}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{...tooltipCfg,callbacks:{label:c=>'Margen: '+fmtP(c.raw)}}},
+    scales:{x:{grid:{color:GRID},ticks:{callback:v=>v+'%'}},y:{grid:{display:false}}}}});
+
+/* ---- MENSUAL interactive ---- */
+let monthChart, monthProfit;
+function renderMonth(scope){
+  const blk = scope==='GLOBAL'? DATA.global : DATA.por_negocio[scope];
+  const m = blk.mensual;
+  const col = scope==='GLOBAL'? '#ff6b2c' : PCOLOR[scope];
+  document.getElementById('monthSelLbl').textContent = (scope==='GLOBAL'?'Consolidado':PNAME[scope])+' · ventas mensuales (MXN)';
+  if(monthChart) monthChart.destroy();
+  monthChart = new Chart(ctx('chMonthSales'),{
+    data:{labels:m.map(x=>x.mes),datasets:[
+      {type:'bar',label:'Ventas',data:m.map(x=>x.ventas),backgroundColor:col,borderRadius:7,maxBarThickness:70},
+      {type:'line',label:'Compras',data:m.map(x=>x.compras),borderColor:'#b59f87',borderDash:[5,4],borderWidth:2,tension:.3,pointRadius:3}]},
+    options:{plugins:{legend:{position:'top',labels:{usePointStyle:true,pointStyle:'rectRounded',padding:12}},
+      tooltip:{...tooltipCfg,callbacks:{label:c=>`${c.dataset.label}: ${fmtMXNc(c.raw)}`}}},
+      scales:{y:{grid:{color:GRID},ticks:{callback:v=>'$'+(v/1000)+'k'}},x:{grid:{display:false}}}}});
+  if(monthProfit) monthProfit.destroy();
+  monthProfit = new Chart(ctx('chMonthProfit'),{
+    data:{labels:m.map(x=>x.mes),datasets:[
+      {type:'bar',label:'Utilidad',data:m.map(x=>x.utilidad),backgroundColor:'rgba(246,193,75,.85)',borderRadius:7,yAxisID:'y',maxBarThickness:70},
+      {type:'line',label:'Margen %',data:m.map(x=>x.margen),borderColor:'#ff6b2c',backgroundColor:'#ff6b2c',borderWidth:3,tension:.35,pointRadius:5,yAxisID:'y1'}]},
+    options:{plugins:{legend:{position:'top',labels:{usePointStyle:true,pointStyle:'rectRounded',padding:12}},
+      tooltip:{...tooltipCfg,callbacks:{label:c=>c.dataset.label==='Margen %'?'Margen: '+fmtP(c.raw):'Utilidad: '+fmtMXNc(c.raw)}}},
+      scales:{y:{grid:{color:GRID},ticks:{callback:v=>'$'+(v/1000)+'k'}},
+        y1:{position:'right',grid:{display:false},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}});
+}
+const monthScopes = ['GLOBAL',...STORES];
+document.getElementById('monthTabs').innerHTML = monthScopes.map((s,i)=>
+  `<button class="tab ${i===0?'active':''}" data-scope="${s}">${s==='GLOBAL'?'Consolidado':PNAME[s]}</button>`).join('');
+document.querySelectorAll('#monthTabs .tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('#monthTabs .tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); renderMonth(t.dataset.scope);
+});
+renderMonth('GLOBAL');
+
+/* All stores monthly */
+new Chart(ctx('chMonthAll'),{
+  data:{labels:DATA.global.mensual.map(m=>m.mes),
+    datasets:STORES.map(s=>({label:PNAME[s],data:DATA.por_negocio[s].mensual.map(m=>m.ventas),
+      borderColor:PCOLOR[s],backgroundColor:PCOLOR[s],type:'line',tension:.35,borderWidth:3,pointRadius:4,
+      fill:false}))},
+  options:{plugins:{legend:{position:'top',labels:{usePointStyle:true,pointStyle:'rectRounded',padding:14}},
+    tooltip:{...tooltipCfg,callbacks:{label:c=>`${c.dataset.label}: ${fmtMXNc(c.raw)}`}}},
+    scales:{y:{grid:{color:GRID},ticks:{callback:v=>'$'+(v/1000)+'k'}},x:{grid:{display:false}}}}});
+
+/* ---- helpers for tables ---- */
+function maxOf(arr,key){return Math.max(...arr.map(r=>Math.abs(r[key])||0))}
+function tblRows(arr,cols,valKey){
+  const mx = maxOf(arr,valKey);
+  return `<div class="tbl-wrap"><table><thead><tr>${cols.map(c=>`<th class="${c.num?'num':''}">${c.h}</th>`).join('')}</tr></thead>
+  <tbody>${arr.map((r,i)=>`<tr>${cols.map(c=>{
+    if(c.k==='__rank') return `<td><span class="rank">${i+1}</span></td>`;
+    let v=r[c.k]; let cls=c.num?'num':(c.code?'code':'');
+    if(c.bar){const w=Math.abs(v)/mx*100;return `<td class="num bar-cell"><div class="barfill" style="width:${w}%"></div><span>${c.fmt?c.fmt(v):v}</span></td>`}
+    if(c.fmt) v=c.fmt(v);
+    if(c.color){cls+= (r[valKey]<0?' neg':' pos')}
+    return `<td class="${cls}">${v}</td>`;
+  }).join('')}</tr>`).join('')}</tbody></table></div>`;
+}
+
+/* ============ COMPRAS ============ */
+let chCompras;
+function renderCompras(scope){
+  let top, bottom, valKey='costo_total';
+  if(scope==='consolidado'){top=DATA.articulos.consolidado.compras_top_monto; bottom=DATA.articulos.consolidado.compras_bottom_monto;}
+  else {top=DATA.articulos.por_negocio[scope].compras_top_monto; bottom=top.slice().reverse();}
+  const colsTop=[{k:'__rank',h:'#'},{k:'desc',h:'Artículo'},{k:'umed',h:'U.M.'},
+    {k:'unidades',h:'Unid.',num:true,fmt:fmtN},{k:'costo_total',h:'Costo total',num:true,bar:true,fmt:fmtMXN}];
+  document.getElementById('tblComprasTop').innerHTML = tblRows(top,colsTop,valKey);
+  document.getElementById('tblComprasBottom').innerHTML = tblRows(bottom,colsTop,valKey);
+  document.getElementById('comprasChartTitle').textContent =
+    `Top 15 artículos por monto de compra · ${scope==='consolidado'?'Consolidado':PNAME[scope]}`;
+  const d=top.slice(0,15);
+  if(chCompras) chCompras.destroy();
+  chCompras=new Chart(ctx('chCompras'),{type:'bar',
+    data:{labels:d.map(x=>x.desc.length>26?x.desc.slice(0,26)+'…':x.desc),
+      datasets:[{data:d.map(x=>x.costo_total),backgroundColor:'#ff6b2c',borderRadius:5,maxBarThickness:26}]},
+    options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{...tooltipCfg,callbacks:{label:c=>fmtMXNc(c.raw)}}},
+      scales:{x:{grid:{color:GRID},ticks:{callback:v=>'$'+(v/1000)+'k'}},y:{grid:{display:false}}}}});
+}
+const articleScopes=['consolidado',...STORES];
+document.getElementById('comprasTabs').innerHTML = articleScopes.map((s,i)=>
+  `<button class="tab ${i===0?'active':''}" data-scope="${s}">${s==='consolidado'?'Consolidado':PNAME[s]}</button>`).join('');
+document.querySelectorAll('#comprasTabs .tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('#comprasTabs .tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); renderCompras(t.dataset.scope);
+});
+renderCompras('consolidado');
+
+/* ============ VENTAS ============ */
+let chVentas;
+function renderVentas(scope){
+  let top, bottom, valKey='venta';
+  if(scope==='consolidado'){top=DATA.articulos.consolidado.ventas_top_monto; bottom=DATA.articulos.consolidado.ventas_bottom_monto;}
+  else {top=DATA.articulos.por_negocio[scope].ventas_top_monto; bottom=top.slice().reverse();}
+  const cols=[{k:'__rank',h:'#'},{k:'desc',h:'Artículo'},{k:'umed',h:'U.M.'},
+    {k:'unidades',h:'Unid.',num:true,fmt:fmtN},{k:'venta',h:'Venta',num:true,bar:true,fmt:fmtMXN}];
+  document.getElementById('tblVentasTop').innerHTML = tblRows(top,cols,valKey);
+  document.getElementById('tblVentasBottom').innerHTML = tblRows(bottom,cols,valKey);
+  document.getElementById('ventasChartTitle').textContent =
+    `Top 15 artículos por venta · ${scope==='consolidado'?'Consolidado':PNAME[scope]}`;
+  const d=top.slice(0,15);
+  if(chVentas) chVentas.destroy();
+  chVentas=new Chart(ctx('chVentas'),{type:'bar',
+    data:{labels:d.map(x=>x.desc.length>26?x.desc.slice(0,26)+'…':x.desc),
+      datasets:[{data:d.map(x=>x.venta),backgroundColor:'#f6c14b',borderRadius:5,maxBarThickness:26}]},
+    options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{...tooltipCfg,callbacks:{label:c=>fmtMXNc(c.raw)}}},
+      scales:{x:{grid:{color:GRID},ticks:{callback:v=>'$'+(v/1000)+'k'}},y:{grid:{display:false}}}}});
+}
+document.getElementById('ventasTabs').innerHTML = articleScopes.map((s,i)=>
+  `<button class="tab ${i===0?'active':''}" data-scope="${s}">${s==='consolidado'?'Consolidado':PNAME[s]}</button>`).join('');
+document.querySelectorAll('#ventasTabs .tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('#ventasTabs .tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); renderVentas(t.dataset.scope);
+});
+renderVentas('consolidado');
+
+/* ============ MARGENES ============ */
+const mTop=DATA.articulos.consolidado.margen_top, mBot=DATA.articulos.consolidado.margen_bottom;
+const marginCols=[{k:'__rank',h:'#'},{k:'desc',h:'Artículo'},{k:'venta',h:'Venta',num:true,fmt:fmtMXN},
+  {k:'costo_estimado',h:'Costo est.',num:true,fmt:fmtMXN},{k:'utilidad',h:'Utilidad',num:true,bar:true,fmt:fmtMXN,color:true},
+  {k:'margen_pct',h:'Margen',num:true,fmt:v=>v.toFixed(1)+'%'}];
+document.getElementById('tblMarginTop').innerHTML = tblRows(mTop,marginCols,'utilidad');
+document.getElementById('tblMarginBottom').innerHTML = tblRows(mBot,marginCols,'utilidad');
+new Chart(ctx('chMarginTop'),{type:'bar',
+  data:{labels:mTop.slice(0,15).map(x=>x.desc.length>24?x.desc.slice(0,24)+'…':x.desc),
+    datasets:[{data:mTop.slice(0,15).map(x=>x.utilidad),backgroundColor:'#7bc47f',borderRadius:5,maxBarThickness:24}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{...tooltipCfg,callbacks:{label:c=>fmtMXNc(c.raw)}}},
+    scales:{x:{grid:{color:GRID},ticks:{callback:v=>'$'+(v/1000)+'k'}},y:{grid:{display:false}}}}});
+new Chart(ctx('chMarginBottom'),{type:'bar',
+  data:{labels:mBot.slice(0,15).map(x=>x.desc.length>24?x.desc.slice(0,24)+'…':x.desc),
+    datasets:[{data:mBot.slice(0,15).map(x=>x.utilidad),backgroundColor:'#e35d5b',borderRadius:5,maxBarThickness:24}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{...tooltipCfg,callbacks:{label:c=>fmtMXNc(c.raw)}}},
+    scales:{x:{grid:{color:GRID},ticks:{callback:v=>'$'+(v/1000)+'k'}},y:{grid:{display:false}}}}});
+
+/* ============ DEVOLUCIONES ============ */
+new Chart(ctx('chDevStore'),{type:'bar',
+  data:{labels:STORES.map(s=>PNAME[s]),datasets:[{data:STORES.map(s=>DATA.por_negocio[s].devoluciones_monto),
+    backgroundColor:STORES.map(s=>PCOLOR[s]),borderRadius:7,maxBarThickness:80}]},
+  options:{plugins:{legend:{display:false},tooltip:{...tooltipCfg,callbacks:{label:c=>fmtMXNc(c.raw)+' · '+DATA.por_negocio[STORES[c.dataIndex]].devoluciones_num+' eventos'}}},
+    scales:{y:{grid:{color:GRID},ticks:{callback:v=>'$'+v}},x:{grid:{display:false}}}}});
+new Chart(ctx('chDevMonth'),{type:'bar',
+  data:{labels:g.mensual.map(m=>m.mes),datasets:[{data:g.mensual.map(m=>m.devoluciones),
+    backgroundColor:'#e35d5b',borderRadius:7,maxBarThickness:80}]},
+  options:{plugins:{legend:{display:false},tooltip:{...tooltipCfg,callbacks:{label:c=>fmtMXNc(c.raw)}}},
+    scales:{y:{grid:{color:GRID},ticks:{callback:v=>'$'+v}},x:{grid:{display:false}}}}});
+
+
+/* ============ KPIs AVANZADOS GLOBAL ============ */
+const md = g.mejor_dia ? new Date(g.mejor_dia.fecha+'T00:00:00').toLocaleDateString('es-MX',{day:'numeric',month:'short'}) : '—';
+document.getElementById('kpiGlobal2').innerHTML = [
+  {lbl:'Markup sobre costo', val:fmtP(g.markup), sub:'Utilidad / compras'},
+  {lbl:'Ventas por día', val:fmtMXN(g.ventas_dia), sub:`${g.dias_venta} días con venta`},
+  {lbl:'SKUs vendidos', val:fmtN(g.skus_vendidos), sub:`${fmtN(g.skus_comprados)} comprados`},
+  {lbl:'Mejor día de venta', val:fmtMXN(g.mejor_dia.monto), sub:md},
+  {lbl:'Tasa de devolución', val:g.tasa_dev.toFixed(2)+'%', sub:`${g.devoluciones_num} de ${fmtN(g.tickets)} tickets`},
+].map(k=>`<div class="kpi"><div class="lbl">${k.lbl}</div><div class="val">${k.val}</div><div class="sub">${k.sub}</div></div>`).join('');
+
+/* ============ PATRONES: día de la semana ============ */
+const DOWL = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
+let dowChart;
+function renderDow(scope){
+  const arr = scope==='GLOBAL' ? g.dow : DATA.por_negocio[scope].dow;
+  const col = scope==='GLOBAL' ? '#ff6b2c' : PCOLOR[scope];
+  document.getElementById('dowLbl').textContent = (scope==='GLOBAL'?'Consolidado':PNAME[scope])+' · ventas acumuladas por día (MXN)';
+  const mxv = Math.max(...arr);
+  if(dowChart) dowChart.destroy();
+  dowChart = new Chart(ctx('chDow'),{type:'bar',
+    data:{labels:DOWL,datasets:[{data:arr,backgroundColor:arr.map(v=>v===mxv?'#f6c14b':col),borderRadius:7,maxBarThickness:46}]},
+    options:{plugins:{legend:{display:false},tooltip:{...tooltipCfg,callbacks:{label:c=>fmtMXNc(c.raw)}}},
+      scales:{y:{grid:{color:GRID},ticks:{callback:v=>'$'+(v/1000)+'k'}},x:{grid:{display:false}}}}});
+}
+const dowScopes=['GLOBAL',...STORES];
+document.getElementById('dowTabs').innerHTML = dowScopes.map((s,i)=>
+  `<button class="tab ${i===0?'active':''}" data-scope="${s}">${s==='GLOBAL'?'Consolidado':PNAME[s]}</button>`).join('');
+document.querySelectorAll('#dowTabs .tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('#dowTabs .tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); renderDow(t.dataset.scope);
+});
+renderDow('GLOBAL');
+
+/* ============ PATRONES: distribución de tickets ============ */
+const dist = g.ticket_dist;
+new Chart(ctx('chDist'),{type:'bar',
+  data:{labels:dist.map(d=>d.rango),datasets:[{data:dist.map(d=>d.count),
+    backgroundColor:['#5fb3c4','#ff6b2c','#f6c14b','#ffb347','#7d6b58'],borderRadius:7,maxBarThickness:64}]},
+  options:{plugins:{legend:{display:false},tooltip:{...tooltipCfg,callbacks:{label:c=>fmtN(c.raw)+' tickets · '+dist[c.dataIndex].pct+'%'}}},
+    scales:{y:{grid:{color:GRID},ticks:{callback:v=>fmtN(v)}},x:{grid:{display:false}}}}});
+
+/* ============ CONCENTRACIÓN: Pareto ============ */
+const par = g.pareto;
+document.getElementById('kpiPareto').innerHTML = [
+  {lbl:'Top 10 artículos', val:fmtP(par.top10), sub:'de la venta total'},
+  {lbl:'Top 20 artículos', val:fmtP(par.top20), sub:'de la venta total'},
+  {lbl:'Top 50 artículos', val:fmtP(par.top50), sub:'de la venta total'},
+  {lbl:'Top 100 artículos', val:fmtP(par.top100), sub:`de ${fmtN(par.total_skus)} SKUs`},
+].map(k=>`<div class="kpi"><div class="lbl">${k.lbl}</div><div class="val">${k.val}</div><div class="sub">${k.sub}</div></div>`).join('');
+new Chart(ctx('chPareto'),{
+  data:{labels:par.curve.map(p=>p.x),datasets:[{type:'line',label:'% acumulado de ventas',
+    data:par.curve.map(p=>p.y),borderColor:'#f6c14b',backgroundColor:'rgba(246,193,75,.12)',
+    borderWidth:3,tension:.3,pointRadius:4,pointBackgroundColor:'#f6c14b',fill:true}]},
+  options:{plugins:{legend:{display:false},tooltip:{...tooltipCfg,callbacks:{
+    title:c=>'Top '+c[0].label+' artículos',label:c=>fmtP(c.raw)+' de la venta'}}},
+    scales:{y:{grid:{color:GRID},min:0,max:100,ticks:{callback:v=>v+'%'}},
+      x:{grid:{display:false},title:{display:true,text:'Número de artículos (acumulado)',color:'#7d6b58'}}}}});
+
+/* ============ CONCENTRACIÓN: crecimiento MoM ============ */
+const momLabels = g.mensual.map(m=>m.mes);
+new Chart(ctx('chMoM'),{
+  data:{labels:momLabels,datasets:STORES.map(s=>({label:PNAME[s],
+    data:DATA.por_negocio[s].mom,borderColor:PCOLOR[s],backgroundColor:PCOLOR[s],
+    type:'line',tension:.3,borderWidth:3,pointRadius:4,spanGaps:false}))},
+  options:{plugins:{legend:{position:'top',labels:{usePointStyle:true,pointStyle:'rectRounded',padding:13}},
+    tooltip:{...tooltipCfg,callbacks:{label:c=>c.dataset.label+': '+(c.raw>0?'+':'')+c.raw+'%'}}},
+    scales:{y:{grid:{color:GRID},ticks:{callback:v=>(v>0?'+':'')+v+'%'}},x:{grid:{display:false}}}}});
+
+/* ---- scroll reveal ---- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

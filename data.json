@@ -1,0 +1,2276 @@
+{
+ "meta": {
+  "periodo": "01 Enero 2026 – 30 Abril 2026",
+  "generado": "2026-05-22",
+  "stores": [
+   "PARRILLA1",
+   "PARRILLA2",
+   "PARRILLA3"
+  ]
+ },
+ "global": {
+  "ventas": 2459493.6,
+  "compras": 2104246.66,
+  "devoluciones_monto": 1344.83,
+  "devoluciones_num": 34,
+  "ventas_netas": 2458148.77,
+  "utilidad": 353902.11,
+  "margen": 14.4,
+  "ratio_compra_venta": 85.6,
+  "tickets": 52618,
+  "ordenes": 3992,
+  "ticket_prom": 46.74,
+  "mensual": [
+   {
+    "mes": "Enero",
+    "ventas": 612287.78,
+    "compras": 523003.39,
+    "devoluciones": 481.31,
+    "ventas_netas": 611806.47,
+    "utilidad": 88803.08,
+    "tickets": 13241,
+    "margen": 14.51
+   },
+   {
+    "mes": "Febrero",
+    "ventas": 575069.36,
+    "compras": 512821.41,
+    "devoluciones": 110.0,
+    "ventas_netas": 574959.36,
+    "utilidad": 62137.95,
+    "tickets": 12416,
+    "margen": 10.81
+   },
+   {
+    "mes": "Marzo",
+    "ventas": 675500.56,
+    "compras": 585652.93,
+    "devoluciones": 287.0,
+    "ventas_netas": 675213.56,
+    "utilidad": 89560.63,
+    "tickets": 14198,
+    "margen": 13.26
+   },
+   {
+    "mes": "Abril",
+    "ventas": 596635.9,
+    "compras": 482768.93,
+    "devoluciones": 466.52,
+    "ventas_netas": 596169.38,
+    "utilidad": 113400.45,
+    "tickets": 12763,
+    "margen": 19.02
+   }
+  ],
+  "markup": 16.82,
+  "ventas_dia": 20668.01,
+  "dias_venta": 119,
+  "skus_vendidos": 1732,
+  "skus_comprados": 1431,
+  "tasa_dev": 0.065,
+  "mejor_dia": {
+   "fecha": "2026-03-01",
+   "monto": 30590.21
+  },
+  "dow": [
+   344725.05,
+   324794.67,
+   318312.06,
+   333439.95,
+   321887.1,
+   387551.14,
+   428783.63
+  ],
+  "mom": [
+   null,
+   -6.1,
+   17.5,
+   -11.7
+  ],
+  "ticket_dist": [
+   {
+    "rango": "< $20",
+    "count": 12348,
+    "pct": 23.5
+   },
+   {
+    "rango": "$20–50",
+    "count": 22259,
+    "pct": 42.3
+   },
+   {
+    "rango": "$50–100",
+    "count": 13064,
+    "pct": 24.8
+   },
+   {
+    "rango": "$100–200",
+    "count": 4497,
+    "pct": 8.5
+   },
+   {
+    "rango": "$200+",
+    "count": 450,
+    "pct": 0.9
+   }
+  ],
+  "pareto": {
+   "top10": 18.4,
+   "top20": 27.5,
+   "top50": 43.0,
+   "top100": 57.2,
+   "total_skus": 1732,
+   "curve": [
+    {
+     "x": 1,
+     "y": 2.8
+    },
+    {
+     "x": 5,
+     "y": 11.5
+    },
+    {
+     "x": 10,
+     "y": 18.4
+    },
+    {
+     "x": 20,
+     "y": 27.5
+    },
+    {
+     "x": 30,
+     "y": 33.9
+    },
+    {
+     "x": 50,
+     "y": 43.0
+    },
+    {
+     "x": 75,
+     "y": 51.4
+    },
+    {
+     "x": 100,
+     "y": 57.2
+    },
+    {
+     "x": 150,
+     "y": 65.1
+    },
+    {
+     "x": 200,
+     "y": 70.9
+    },
+    {
+     "x": 300,
+     "y": 78.5
+    },
+    {
+     "x": 500,
+     "y": 87.5
+    },
+    {
+     "x": 1732,
+     "y": 100.0
+    }
+   ]
+  }
+ },
+ "por_negocio": {
+  "PARRILLA1": {
+   "ventas": 1200599.65,
+   "tickets": 22802,
+   "ticket_prom": 52.65,
+   "compras": 1031216.55,
+   "ordenes": 1509,
+   "devoluciones_monto": 720.38,
+   "devoluciones_num": 17,
+   "ventas_netas": 1199879.27,
+   "utilidad": 168662.72,
+   "margen": 14.06,
+   "ratio_compra_venta": 85.94,
+   "mensual": [
+    {
+     "mes": "Enero",
+     "ventas": 304761.36,
+     "compras": 261078.36,
+     "devoluciones": 197.86,
+     "ventas_netas": 304563.5,
+     "utilidad": 43485.14,
+     "tickets": 5724,
+     "margen": 14.28
+    },
+    {
+     "mes": "Febrero",
+     "ventas": 280913.25,
+     "compras": 258139.05,
+     "devoluciones": 100.0,
+     "ventas_netas": 280813.25,
+     "utilidad": 22674.2,
+     "tickets": 5362,
+     "margen": 8.07
+    },
+    {
+     "mes": "Marzo",
+     "ventas": 328793.64,
+     "compras": 273579.43,
+     "devoluciones": 198.0,
+     "ventas_netas": 328595.64,
+     "utilidad": 55016.21,
+     "tickets": 6339,
+     "margen": 16.74
+    },
+    {
+     "mes": "Abril",
+     "ventas": 286131.4,
+     "compras": 238419.71,
+     "devoluciones": 224.52,
+     "ventas_netas": 285906.88,
+     "utilidad": 47487.17,
+     "tickets": 5377,
+     "margen": 16.61
+    }
+   ],
+   "markup": 16.36,
+   "ventas_dia": 10089.07,
+   "dias_venta": 119,
+   "skus_vendidos": 1433,
+   "skus_comprados": 1181,
+   "tasa_dev": 0.075,
+   "mejor_dia": {
+    "fecha": "2026-03-16",
+    "monto": 15177.24
+   },
+   "dow": [
+    173685.3,
+    155183.95,
+    154287.62,
+    165032.37,
+    155378.54,
+    187404.41,
+    209627.46
+   ],
+   "mom": [
+    null,
+    -7.8,
+    17.0,
+    -13.0
+   ],
+   "ticket_dist": [
+    {
+     "rango": "< $20",
+     "count": 4426,
+     "pct": 19.4
+    },
+    {
+     "rango": "$20–50",
+     "count": 9094,
+     "pct": 39.9
+    },
+    {
+     "rango": "$50–100",
+     "count": 6446,
+     "pct": 28.3
+    },
+    {
+     "rango": "$100–200",
+     "count": 2595,
+     "pct": 11.4
+    },
+    {
+     "rango": "$200+",
+     "count": 241,
+     "pct": 1.1
+    }
+   ]
+  },
+  "PARRILLA2": {
+   "ventas": 828483.29,
+   "tickets": 19366,
+   "ticket_prom": 42.78,
+   "compras": 717524.03,
+   "ordenes": 1320,
+   "devoluciones_monto": 439.45,
+   "devoluciones_num": 10,
+   "ventas_netas": 828043.84,
+   "utilidad": 110519.81,
+   "margen": 13.35,
+   "ratio_compra_venta": 86.65,
+   "mensual": [
+    {
+     "mes": "Enero",
+     "ventas": 203040.84,
+     "compras": 179571.62,
+     "devoluciones": 214.45,
+     "ventas_netas": 202826.39,
+     "utilidad": 23254.77,
+     "tickets": 4865,
+     "margen": 11.47
+    },
+    {
+     "mes": "Febrero",
+     "ventas": 201373.96,
+     "compras": 180322.74,
+     "devoluciones": 0.0,
+     "ventas_netas": 201373.96,
+     "utilidad": 21051.22,
+     "tickets": 4743,
+     "margen": 10.45
+    },
+    {
+     "mes": "Marzo",
+     "ventas": 232939.65,
+     "compras": 208830.22,
+     "devoluciones": 30.0,
+     "ventas_netas": 232909.65,
+     "utilidad": 24079.43,
+     "tickets": 5158,
+     "margen": 10.34
+    },
+    {
+     "mes": "Abril",
+     "ventas": 191128.84,
+     "compras": 148799.45,
+     "devoluciones": 195.0,
+     "ventas_netas": 190933.84,
+     "utilidad": 42134.39,
+     "tickets": 4600,
+     "margen": 22.07
+    }
+   ],
+   "markup": 15.4,
+   "ventas_dia": 7021.04,
+   "dias_venta": 118,
+   "skus_vendidos": 1179,
+   "skus_comprados": 997,
+   "tasa_dev": 0.052,
+   "mejor_dia": {
+    "fecha": "2026-03-01",
+    "monto": 11596.37
+   },
+   "dow": [
+    121109.62,
+    105890.69,
+    107965.59,
+    109922.03,
+    106709.86,
+    130577.27,
+    146308.23
+   ],
+   "mom": [
+    null,
+    -0.8,
+    15.7,
+    -17.9
+   ],
+   "ticket_dist": [
+    {
+     "rango": "< $20",
+     "count": 5028,
+     "pct": 26.0
+    },
+    {
+     "rango": "$20–50",
+     "count": 8416,
+     "pct": 43.5
+    },
+    {
+     "rango": "$50–100",
+     "count": 4512,
+     "pct": 23.3
+    },
+    {
+     "rango": "$100–200",
+     "count": 1282,
+     "pct": 6.6
+    },
+    {
+     "rango": "$200+",
+     "count": 128,
+     "pct": 0.7
+    }
+   ]
+  },
+  "PARRILLA3": {
+   "ventas": 430410.66,
+   "tickets": 10450,
+   "ticket_prom": 41.19,
+   "compras": 355506.08,
+   "ordenes": 1163,
+   "devoluciones_monto": 185.0,
+   "devoluciones_num": 7,
+   "ventas_netas": 430225.66,
+   "utilidad": 74719.58,
+   "margen": 17.37,
+   "ratio_compra_venta": 82.63,
+   "mensual": [
+    {
+     "mes": "Enero",
+     "ventas": 104485.58,
+     "compras": 82353.41,
+     "devoluciones": 69.0,
+     "ventas_netas": 104416.58,
+     "utilidad": 22063.17,
+     "tickets": 2652,
+     "margen": 21.13
+    },
+    {
+     "mes": "Febrero",
+     "ventas": 92782.15,
+     "compras": 74359.62,
+     "devoluciones": 10.0,
+     "ventas_netas": 92772.15,
+     "utilidad": 18412.53,
+     "tickets": 2311,
+     "margen": 19.85
+    },
+    {
+     "mes": "Marzo",
+     "ventas": 113767.27,
+     "compras": 103243.28,
+     "devoluciones": 59.0,
+     "ventas_netas": 113708.27,
+     "utilidad": 10464.99,
+     "tickets": 2701,
+     "margen": 9.2
+    },
+    {
+     "mes": "Abril",
+     "ventas": 119375.66,
+     "compras": 95549.77,
+     "devoluciones": 47.0,
+     "ventas_netas": 119328.66,
+     "utilidad": 23778.89,
+     "tickets": 2786,
+     "margen": 19.93
+    }
+   ],
+   "markup": 21.02,
+   "ventas_dia": 3710.44,
+   "dias_venta": 116,
+   "skus_vendidos": 983,
+   "skus_comprados": 737,
+   "tasa_dev": 0.067,
+   "mejor_dia": {
+    "fecha": "2026-03-22",
+    "monto": 6143.0
+   },
+   "dow": [
+    49930.13,
+    63720.03,
+    56058.85,
+    58485.55,
+    59798.7,
+    69569.46,
+    72847.94
+   ],
+   "mom": [
+    null,
+    -11.2,
+    22.6,
+    4.9
+   ],
+   "ticket_dist": [
+    {
+     "rango": "< $20",
+     "count": 2894,
+     "pct": 27.7
+    },
+    {
+     "rango": "$20–50",
+     "count": 4749,
+     "pct": 45.4
+    },
+    {
+     "rango": "$50–100",
+     "count": 2106,
+     "pct": 20.2
+    },
+    {
+     "rango": "$100–200",
+     "count": 620,
+     "pct": 5.9
+    },
+    {
+     "rango": "$200+",
+     "count": 81,
+     "pct": 0.8
+    }
+   ]
+  }
+ },
+ "articulos": {
+  "consolidado": {
+   "compras_top_unidades": [
+    {
+     "codigo": "TELERAPAZ",
+     "desc": "PAN TELERA LA PAZ",
+     "umed": "PIEZAS",
+     "unidades": 5490.0,
+     "costo_total": 24707.36
+    },
+    {
+     "codigo": "CS",
+     "desc": "CIGARRO MALBORO SUELTO",
+     "umed": "Pieza",
+     "unidades": 4642.0,
+     "costo_total": 27440.3
+    },
+    {
+     "codigo": "TMZ",
+     "desc": "TORTILLA DE MAIZ",
+     "umed": "PIEZA",
+     "unidades": 3817.5,
+     "costo_total": 76350.0
+    },
+    {
+     "codigo": "HUEV",
+     "desc": "HUEVO",
+     "umed": "KILOGRAMO",
+     "unidades": 2335.54,
+     "costo_total": 57731.08
+    },
+    {
+     "codigo": "DULCEPAZ",
+     "desc": "PAN DULCE LA PAZ",
+     "umed": "PIEZAS",
+     "unidades": 2252.0,
+     "costo_total": 33105.95
+    },
+    {
+     "codigo": "FGR",
+     "desc": "FRIJOLES",
+     "umed": "PIEZA",
+     "unidades": 2026.0,
+     "costo_total": 42546.0
+    },
+    {
+     "codigo": "7501055300594",
+     "desc": "COCA COLA 1.5 LR",
+     "umed": "PIEZA",
+     "unidades": 1632.0,
+     "costo_total": 38839.48
+    },
+    {
+     "codigo": "SFS",
+     "desc": "SALCHICHA FUD SUELTA",
+     "umed": "PIEZA",
+     "unidades": 1550.08,
+     "costo_total": 5330.48
+    },
+    {
+     "codigo": "7501055310227",
+     "desc": "COCA COLA 2.5 LR",
+     "umed": "PIEZA",
+     "unidades": 1496.0,
+     "costo_total": 54136.4
+    },
+    {
+     "codigo": "75004699",
+     "desc": "COCA COLA 500 ML VIDRIO",
+     "umed": "PIEZA",
+     "unidades": 1307.0,
+     "costo_total": 17154.38
+    },
+    {
+     "codigo": "TMS",
+     "desc": "TORTILLA DE MASECA",
+     "umed": "PIEZA",
+     "unidades": 1186.5,
+     "costo_total": 24873.4
+    },
+    {
+     "codigo": "PRS",
+     "desc": "CIGARRO PRESIDENTE SUELTO",
+     "umed": "Pieza",
+     "unidades": 1170.0,
+     "costo_total": 2470.0
+    },
+    {
+     "codigo": "75007614",
+     "desc": "COCA COLA 600 ML",
+     "umed": "PIEZA",
+     "unidades": 1104.0,
+     "costo_total": 21244.0
+    },
+    {
+     "codigo": "75005283",
+     "desc": "CUARTITO XX",
+     "umed": "Pieza",
+     "unidades": 1080.0,
+     "costo_total": 6922.8
+    },
+    {
+     "codigo": "7501259620023",
+     "desc": "QUEEN 1LT",
+     "umed": "PIEZA",
+     "unidades": 1050.0,
+     "costo_total": 30246.9
+    }
+   ],
+   "compras_top_monto": [
+    {
+     "codigo": "TMZ",
+     "desc": "TORTILLA DE MAIZ",
+     "umed": "PIEZA",
+     "unidades": 3817.5,
+     "costo_total": 76350.0
+    },
+    {
+     "codigo": "HUEV",
+     "desc": "HUEVO",
+     "umed": "KILOGRAMO",
+     "unidades": 2335.54,
+     "costo_total": 57731.08
+    },
+    {
+     "codigo": "7501055310227",
+     "desc": "COCA COLA 2.5 LR",
+     "umed": "PIEZA",
+     "unidades": 1496.0,
+     "costo_total": 54136.4
+    },
+    {
+     "codigo": "FGR",
+     "desc": "FRIJOLES",
+     "umed": "PIEZA",
+     "unidades": 2026.0,
+     "costo_total": 42546.0
+    },
+    {
+     "codigo": "QCOVA",
+     "desc": "QUESO COVARRUBIAS",
+     "umed": "KILOGRAMO",
+     "unidades": 254.81,
+     "costo_total": 40212.77
+    },
+    {
+     "codigo": "7501055300594",
+     "desc": "COCA COLA 1.5 LR",
+     "umed": "PIEZA",
+     "unidades": 1632.0,
+     "costo_total": 38839.48
+    },
+    {
+     "codigo": "DULCEPAZ",
+     "desc": "PAN DULCE LA PAZ",
+     "umed": "PIEZAS",
+     "unidades": 2252.0,
+     "costo_total": 33105.95
+    },
+    {
+     "codigo": "7501259620023",
+     "desc": "QUEEN 1LT",
+     "umed": "PIEZA",
+     "unidades": 1050.0,
+     "costo_total": 30246.9
+    },
+    {
+     "codigo": "CS",
+     "desc": "CIGARRO MALBORO SUELTO",
+     "umed": "Pieza",
+     "unidades": 4642.0,
+     "costo_total": 27440.3
+    },
+    {
+     "codigo": "TMS",
+     "desc": "TORTILLA DE MASECA",
+     "umed": "PIEZA",
+     "unidades": 1186.5,
+     "costo_total": 24873.4
+    },
+    {
+     "codigo": "7501020557695",
+     "desc": "QUEEN GALON",
+     "umed": "PIEZA",
+     "unidades": 472.0,
+     "costo_total": 24854.4
+    },
+    {
+     "codigo": "TELERAPAZ",
+     "desc": "PAN TELERA LA PAZ",
+     "umed": "PIEZAS",
+     "unidades": 5490.0,
+     "costo_total": 24707.36
+    },
+    {
+     "codigo": "QEXC",
+     "desc": "QUESO EXCELSIOR",
+     "umed": "KILOGRAMO",
+     "unidades": 150.81,
+     "costo_total": 22190.12
+    },
+    {
+     "codigo": "CIEL",
+     "desc": "GARRAFON CIEL",
+     "umed": "PIEZA",
+     "unidades": 443.0,
+     "costo_total": 21264.0
+    },
+    {
+     "codigo": "75007614",
+     "desc": "COCA COLA 600 ML",
+     "umed": "PIEZA",
+     "unidades": 1104.0,
+     "costo_total": 21244.0
+    }
+   ],
+   "compras_bottom_monto": [
+    {
+     "codigo": "7501011181762",
+     "desc": "BE LIGHT TORONJA 1.5LT",
+     "umed": "Pieza",
+     "unidades": 6.0,
+     "costo_total": 0.01
+    },
+    {
+     "codigo": "7622202807077",
+     "desc": "HALLS MUNDIAL",
+     "umed": "Pieza",
+     "unidades": 2.0,
+     "costo_total": 9.0
+    },
+    {
+     "codigo": "7622210573087",
+     "desc": "TANG DE UVA 13GR",
+     "umed": "Pieza",
+     "unidades": 2.0,
+     "costo_total": 11.38
+    },
+    {
+     "codigo": "7506475102476",
+     "desc": "GERBER DURAZNO",
+     "umed": "PIEZA",
+     "unidades": 1.0,
+     "costo_total": 11.8
+    },
+    {
+     "codigo": "GUINDO",
+     "desc": "GUINDO",
+     "umed": "Pieza",
+     "unidades": 0.31,
+     "costo_total": 13.95
+    },
+    {
+     "codigo": "7501030463740",
+     "desc": "DELICIOSA SABOR VAINILLA 130GR",
+     "umed": "PIEZA",
+     "unidades": 1.0,
+     "costo_total": 16.8
+    },
+    {
+     "codigo": "75073282",
+     "desc": "BUBBALO TUTI FRUTTI",
+     "umed": "Pieza",
+     "unidades": 19.0,
+     "costo_total": 17.06
+    },
+    {
+     "codigo": "7503030374736",
+     "desc": "PALETA CUPIDO 14GR",
+     "umed": "Pieza",
+     "unidades": 8.0,
+     "costo_total": 17.4
+    },
+    {
+     "codigo": "75039127",
+     "desc": "CHUPADEDO 16GR",
+     "umed": "Pieza",
+     "unidades": 8.0,
+     "costo_total": 17.4
+    },
+    {
+     "codigo": "759686272682",
+     "desc": "PALETA PINTA AZUL",
+     "umed": "Pieza",
+     "unidades": 8.0,
+     "costo_total": 17.4
+    },
+    {
+     "codigo": "010248765128",
+     "desc": "SOPA YEMINA ESTRELLA 2 200G",
+     "umed": "PIEZA",
+     "unidades": 2.0,
+     "costo_total": 18.0
+    },
+    {
+     "codigo": "7506192504416",
+     "desc": "SAVILE SHAMPOO ACEITE DE ARGAN 180 ML",
+     "umed": "Pieza",
+     "unidades": 1.0,
+     "costo_total": 18.0
+    },
+    {
+     "codigo": "036731107060",
+     "desc": "GATORADE PONCHE DE FRUTAS 750ML",
+     "umed": "Pieza",
+     "unidades": 1.0,
+     "costo_total": 19.21
+    },
+    {
+     "codigo": "7501032300098",
+     "desc": "DANONE LICUADO NUEZ CON CEREALES 435GR",
+     "umed": "Pieza",
+     "unidades": 1.0,
+     "costo_total": 21.1
+    },
+    {
+     "codigo": "7501008065785",
+     "desc": "RICE TREATS CHOCO MALVAVISCO MEGA 34GR",
+     "umed": "Pieza",
+     "unidades": 4.0,
+     "costo_total": 21.6
+    }
+   ],
+   "ventas_top_unidades": [
+    {
+     "codigo": "TELERAPAZ",
+     "desc": "PAN TELERA LA PAZ",
+     "umed": "PIEZAS",
+     "unidades": 5304.0,
+     "venta": 26520.0
+    },
+    {
+     "codigo": "CS",
+     "desc": "CIGARRO MALBORO SUELTO",
+     "umed": "Pieza",
+     "unidades": 4488.0,
+     "venta": 39966.0
+    },
+    {
+     "codigo": "TMZ",
+     "desc": "TORTILLA DE MAIZ",
+     "umed": "PIEZA",
+     "unidades": 3040.61,
+     "venta": 69933.99
+    },
+    {
+     "codigo": "HUEV",
+     "desc": "HUEVO",
+     "umed": "KILOGRAMO",
+     "unidades": 2080.83,
+     "venta": 62424.99
+    },
+    {
+     "codigo": "DULCEPAZ",
+     "desc": "PAN DULCE LA PAZ",
+     "umed": "PIEZAS",
+     "unidades": 2010.0,
+     "venta": 32160.0
+    },
+    {
+     "codigo": "FGR",
+     "desc": "FRIJOLES",
+     "umed": "PIEZA",
+     "unidades": 1867.67,
+     "venta": 46691.85
+    },
+    {
+     "codigo": "7501055300594",
+     "desc": "COCA COLA 1.5 LR",
+     "umed": "PIEZA",
+     "unidades": 1654.0,
+     "venta": 44658.0
+    },
+    {
+     "codigo": "SFS",
+     "desc": "SALCHICHA FUD SUELTA",
+     "umed": "PIEZA",
+     "unidades": 1579.16,
+     "venta": 6316.64
+    },
+    {
+     "codigo": "7501055310227",
+     "desc": "COCA COLA 2.5 LR",
+     "umed": "PIEZA",
+     "unidades": 1441.0,
+     "venta": 59081.0
+    },
+    {
+     "codigo": "PRS",
+     "desc": "CIGARRO PRESIDENTE SUELTO",
+     "umed": "Pieza",
+     "unidades": 1233.0,
+     "venta": 3699.0
+    },
+    {
+     "codigo": "75004699",
+     "desc": "COCA COLA 500 ML VIDRIO",
+     "umed": "PIEZA",
+     "unidades": 1186.0,
+     "venta": 17790.0
+    },
+    {
+     "codigo": "75005283",
+     "desc": "CUARTITO XX",
+     "umed": "Pieza",
+     "unidades": 1122.0,
+     "venta": 8320.0
+    },
+    {
+     "codigo": "75007614",
+     "desc": "COCA COLA 600 ML",
+     "umed": "PIEZA",
+     "unidades": 1117.0,
+     "venta": 24574.0
+    },
+    {
+     "codigo": "7501061696971",
+     "desc": "INDIO LATA 355ML",
+     "umed": "Pieza",
+     "unidades": 1063.0,
+     "venta": 13806.0
+    },
+    {
+     "codigo": "75019020",
+     "desc": "CUARTITOS TECATE",
+     "umed": "PIEZA",
+     "unidades": 1044.0,
+     "venta": 7541.0
+    }
+   ],
+   "ventas_top_monto": [
+    {
+     "codigo": "TMZ",
+     "desc": "TORTILLA DE MAIZ",
+     "umed": "PIEZA",
+     "unidades": 3040.61,
+     "venta": 69933.99
+    },
+    {
+     "codigo": "HUEV",
+     "desc": "HUEVO",
+     "umed": "KILOGRAMO",
+     "unidades": 2080.83,
+     "venta": 62424.99
+    },
+    {
+     "codigo": "7501055310227",
+     "desc": "COCA COLA 2.5 LR",
+     "umed": "PIEZA",
+     "unidades": 1441.0,
+     "venta": 59081.0
+    },
+    {
+     "codigo": "FGR",
+     "desc": "FRIJOLES",
+     "umed": "PIEZA",
+     "unidades": 1867.67,
+     "venta": 46691.85
+    },
+    {
+     "codigo": "7501055300594",
+     "desc": "COCA COLA 1.5 LR",
+     "umed": "PIEZA",
+     "unidades": 1654.0,
+     "venta": 44658.0
+    },
+    {
+     "codigo": "CS",
+     "desc": "CIGARRO MALBORO SUELTO",
+     "umed": "Pieza",
+     "unidades": 4488.0,
+     "venta": 39966.0
+    },
+    {
+     "codigo": "QCOVA",
+     "desc": "QUESO COVARRUBIAS",
+     "umed": "KILOGRAMO",
+     "unidades": 232.57,
+     "venta": 39560.49
+    },
+    {
+     "codigo": "7501259620023",
+     "desc": "QUEEN 1LT",
+     "umed": "PIEZA",
+     "unidades": 1016.0,
+     "venta": 32512.0
+    },
+    {
+     "codigo": "DULCEPAZ",
+     "desc": "PAN DULCE LA PAZ",
+     "umed": "PIEZAS",
+     "unidades": 2010.0,
+     "venta": 32160.0
+    },
+    {
+     "codigo": "TELERAPAZ",
+     "desc": "PAN TELERA LA PAZ",
+     "umed": "PIEZAS",
+     "unidades": 5304.0,
+     "venta": 26520.0
+    },
+    {
+     "codigo": "7501020557695",
+     "desc": "QUEEN GALON",
+     "umed": "PIEZA",
+     "unidades": 457.0,
+     "venta": 25592.0
+    },
+    {
+     "codigo": "QEXC",
+     "desc": "QUESO EXCELSIOR",
+     "umed": "KILOGRAMO",
+     "unidades": 144.25,
+     "venta": 24810.7
+    },
+    {
+     "codigo": "75007614",
+     "desc": "COCA COLA 600 ML",
+     "umed": "PIEZA",
+     "unidades": 1117.0,
+     "venta": 24574.0
+    },
+    {
+     "codigo": "CIEL",
+     "desc": "GARRAFON CIEL",
+     "umed": "PIEZA",
+     "unidades": 438.0,
+     "venta": 23652.0
+    },
+    {
+     "codigo": "MARY",
+     "desc": "MARELY",
+     "umed": "PIEZA",
+     "unidades": 881.0,
+     "venta": 22906.0
+    }
+   ],
+   "ventas_bottom_monto": [
+    {
+     "codigo": "75039158",
+     "desc": "PICA GOMA 6G",
+     "umed": "PIEZA",
+     "unidades": 1.0,
+     "venta": 1.0
+    },
+    {
+     "codigo": "50",
+     "desc": "BARRENO",
+     "umed": "Pieza",
+     "unidades": 1.0,
+     "venta": 2.0
+    },
+    {
+     "codigo": "ACIDU",
+     "desc": "PALETA ACIDITA",
+     "umed": "Pieza",
+     "unidades": 1.0,
+     "venta": 2.0
+    },
+    {
+     "codigo": "75075149",
+     "desc": "NUCITA CHOCOVAILLA 14GR",
+     "umed": "Pieza",
+     "unidades": 1.0,
+     "venta": 3.0
+    },
+    {
+     "codigo": "75075163",
+     "desc": "NUCITA TRISABOR 14GR",
+     "umed": "Pieza",
+     "unidades": 1.0,
+     "venta": 3.0
+    },
+    {
+     "codigo": "MILLO",
+     "desc": "TOMILLO",
+     "umed": "Pieza",
+     "unidades": 1.0,
+     "venta": 3.0
+    },
+    {
+     "codigo": "POPS",
+     "desc": "POPOTE SUELTO",
+     "umed": "Pieza",
+     "unidades": 1.0,
+     "venta": 3.0
+    },
+    {
+     "codigo": "MAZ",
+     "desc": "MAZ",
+     "umed": "PIEZA",
+     "unidades": 1.0,
+     "venta": 4.0
+    },
+    {
+     "codigo": "TEF",
+     "desc": "TABCIN EFERVECENTE",
+     "umed": "Pieza",
+     "unidades": 1.0,
+     "venta": 4.0
+    },
+    {
+     "codigo": "7501040002335",
+     "desc": "JAMON CHIMEX COCIDO 162G",
+     "umed": "PIEZA",
+     "unidades": 0.15,
+     "venta": 4.8
+    },
+    {
+     "codigo": "724869007214",
+     "desc": "MAZAPAN 21GR",
+     "umed": "Pieza",
+     "unidades": 1.0,
+     "venta": 5.0
+    },
+    {
+     "codigo": "757528034313",
+     "desc": "RELLERINDO SABOR MANGO 11GR",
+     "umed": "Pieza",
+     "unidades": 2.0,
+     "venta": 5.0
+    },
+    {
+     "codigo": "7622202232428",
+     "desc": "PANDITAS NAVIDAD 15GR",
+     "umed": "Pieza",
+     "unidades": 1.0,
+     "venta": 5.0
+    },
+    {
+     "codigo": "790203019113",
+     "desc": "DEDOS 20GR",
+     "umed": "Pieza",
+     "unidades": 1.0,
+     "venta": 5.0
+    },
+    {
+     "codigo": "43",
+     "desc": "BOLA DE HUMO",
+     "umed": "Pieza",
+     "unidades": 2.0,
+     "venta": 6.0
+    }
+   ],
+   "margen_top": [
+    {
+     "codigo": "CS",
+     "desc": "CIGARRO MALBORO SUELTO",
+     "venta": 39966.0,
+     "costo_estimado": 26529.96,
+     "utilidad": 13436.04,
+     "margen_pct": 33.62
+    },
+    {
+     "codigo": "HUEV",
+     "desc": "HUEVO",
+     "venta": 62424.99,
+     "costo_estimado": 51435.09,
+     "utilidad": 10989.9,
+     "margen_pct": 17.6
+    },
+    {
+     "codigo": "TMZ",
+     "desc": "TORTILLA DE MAIZ",
+     "venta": 69933.99,
+     "costo_estimado": 60812.14,
+     "utilidad": 9121.85,
+     "margen_pct": 13.04
+    },
+    {
+     "codigo": "FGR",
+     "desc": "FRIJOLES",
+     "venta": 46691.85,
+     "costo_estimado": 39221.15,
+     "utilidad": 7470.7,
+     "margen_pct": 16.0
+    },
+    {
+     "codigo": "7501055310227",
+     "desc": "COCA COLA 2.5 LR",
+     "venta": 59081.0,
+     "costo_estimado": 52146.09,
+     "utilidad": 6934.91,
+     "margen_pct": 11.74
+    },
+    {
+     "codigo": "7501055300594",
+     "desc": "COCA COLA 1.5 LR",
+     "venta": 44658.0,
+     "costo_estimado": 39363.05,
+     "utilidad": 5294.95,
+     "margen_pct": 11.86
+    },
+    {
+     "codigo": "DESEB",
+     "desc": "DESEBRADA",
+     "venta": 16598.09,
+     "costo_estimado": 12087.61,
+     "utilidad": 4510.48,
+     "margen_pct": 27.17
+    },
+    {
+     "codigo": "7501049912215",
+     "desc": "CAGUAMA XX",
+     "venta": 20225.0,
+     "costo_estimado": 15877.17,
+     "utilidad": 4347.83,
+     "margen_pct": 21.5
+    },
+    {
+     "codigo": "7501061696988",
+     "desc": "INDIO 16 OZ",
+     "venta": 15625.0,
+     "costo_estimado": 11991.15,
+     "utilidad": 3633.85,
+     "margen_pct": 23.26
+    },
+    {
+     "codigo": "QEXC",
+     "desc": "QUESO EXCELSIOR",
+     "venta": 24810.7,
+     "costo_estimado": 21224.64,
+     "utilidad": 3586.06,
+     "margen_pct": 14.45
+    },
+    {
+     "codigo": "7501049967062",
+     "desc": "SOL CLAMATO 16OZ",
+     "venta": 11934.0,
+     "costo_estimado": 8358.59,
+     "utilidad": 3575.41,
+     "margen_pct": 29.96
+    },
+    {
+     "codigo": "7501061668930",
+     "desc": "CAGUAMA TECATE ROJA",
+     "venta": 6439.0,
+     "costo_estimado": 2934.08,
+     "utilidad": 3504.92,
+     "margen_pct": 54.43
+    },
+    {
+     "codigo": "7501061669289",
+     "desc": "TECATE LIGHT 16 OZ",
+     "venta": 14300.0,
+     "costo_estimado": 10974.3,
+     "utilidad": 3325.7,
+     "margen_pct": 23.26
+    },
+    {
+     "codigo": "8934635000178",
+     "desc": "PRESIDENTE 20C",
+     "venta": 12240.0,
+     "costo_estimado": 8993.74,
+     "utilidad": 3246.26,
+     "margen_pct": 26.52
+    },
+    {
+     "codigo": "7501259620023",
+     "desc": "QUEEN 1LT",
+     "venta": 32512.0,
+     "costo_estimado": 29267.48,
+     "utilidad": 3244.52,
+     "margen_pct": 9.98
+    }
+   ],
+   "margen_bottom": [
+    {
+     "codigo": "7503024416138",
+     "desc": "AMSTEL ULTRA LATA 355ML",
+     "venta": 10206.0,
+     "costo_estimado": 14079.42,
+     "utilidad": -3873.42,
+     "margen_pct": -37.95
+    },
+    {
+     "codigo": "MS",
+     "desc": "MAYONESA STAR VALUE 3.4K",
+     "venta": 2146.66,
+     "costo_estimado": 3193.72,
+     "utilidad": -1047.06,
+     "margen_pct": -48.78
+    },
+    {
+     "codigo": "7501055311439",
+     "desc": "SPRITE ZERO 250 ML",
+     "venta": 88.0,
+     "costo_estimado": 823.36,
+     "utilidad": -735.36,
+     "margen_pct": -835.64
+    },
+    {
+     "codigo": "7501005110242",
+     "desc": "MAIZENA FECULA DE MAIZ",
+     "venta": 440.0,
+     "costo_estimado": 762.51,
+     "utilidad": -322.51,
+     "margen_pct": -73.3
+    },
+    {
+     "codigo": "PC",
+     "desc": "PEDIGREE CACHORRO SUELTO",
+     "venta": 13581.66,
+     "costo_estimado": 13851.35,
+     "utilidad": -269.69,
+     "margen_pct": -1.99
+    },
+    {
+     "codigo": "TAM",
+     "desc": "TAMPAX SUELTO",
+     "venta": 6.12,
+     "costo_estimado": 244.8,
+     "utilidad": -238.68,
+     "margen_pct": -3900.0
+    },
+    {
+     "codigo": "7501055328338",
+     "desc": "FRESCA 400ML",
+     "venta": 285.0,
+     "costo_estimado": 498.75,
+     "utilidad": -213.75,
+     "margen_pct": -75.0
+    },
+    {
+     "codigo": "CC",
+     "desc": "CHILES CURTIDOS SUELTOS",
+     "venta": 226.75,
+     "costo_estimado": 437.63,
+     "utilidad": -210.88,
+     "margen_pct": -93.0
+    },
+    {
+     "codigo": "CATS",
+     "desc": "MI CATSUP 4K",
+     "venta": 112.26,
+     "costo_estimado": 314.33,
+     "utilidad": -202.07,
+     "margen_pct": -180.0
+    },
+    {
+     "codigo": "7501119500366",
+     "desc": "MICRODYN 15ML",
+     "venta": 275.0,
+     "costo_estimado": 374.0,
+     "utilidad": -99.0,
+     "margen_pct": -36.0
+    },
+    {
+     "codigo": "7501369200115",
+     "desc": "ESTOMAQUIL",
+     "venta": 115.0,
+     "costo_estimado": 207.0,
+     "utilidad": -92.0,
+     "margen_pct": -80.0
+    },
+    {
+     "codigo": "7501639303638",
+     "desc": "QUESO PARA NACHOS 1KG",
+     "venta": 157.5,
+     "costo_estimado": 245.7,
+     "utilidad": -88.2,
+     "margen_pct": -56.0
+    },
+    {
+     "codigo": "7500810005064",
+     "desc": "CACAHUATE KIYAKIS CLASICO 120G",
+     "venta": 1488.0,
+     "costo_estimado": 1562.4,
+     "utilidad": -74.4,
+     "margen_pct": -5.0
+    },
+    {
+     "codigo": "FR250",
+     "desc": "FRESCA 250ML",
+     "venta": 253.0,
+     "costo_estimado": 327.03,
+     "utilidad": -74.03,
+     "margen_pct": -29.26
+    },
+    {
+     "codigo": "7502226817170",
+     "desc": "SKITTLES ORIGINAL 54.4GR",
+     "venta": 90.0,
+     "costo_estimado": 160.0,
+     "utilidad": -70.0,
+     "margen_pct": -77.78
+    }
+   ],
+   "totales": {
+    "articulos_comprados": 1431,
+    "articulos_vendidos": 1732,
+    "costo_total": 2103776.66,
+    "venta_total": 2458966.11
+   }
+  },
+  "por_negocio": {
+   "PARRILLA1": {
+    "compras_top_monto": [
+     {
+      "codigo": "TMZ",
+      "desc": "TORTILLA DE MAIZ",
+      "umed": "PIEZA",
+      "unidades": 1585.0,
+      "costo_total": 31700.0
+     },
+     {
+      "codigo": "HUEV",
+      "desc": "HUEVO",
+      "umed": "KILOGRAMO",
+      "unidades": 1193.0,
+      "costo_total": 29288.62
+     },
+     {
+      "codigo": "7501055310227",
+      "desc": "COCA COLA 2.5 LR",
+      "umed": "PIEZA",
+      "unidades": 728.0,
+      "costo_total": 26344.4
+     },
+     {
+      "codigo": "FGR",
+      "desc": "FRIJOLES",
+      "umed": "PIEZA",
+      "unidades": 1151.0,
+      "costo_total": 24171.0
+     },
+     {
+      "codigo": "QCOVA",
+      "desc": "QUESO COVARRUBIAS",
+      "umed": "KILOGRAMO",
+      "unidades": 113.89,
+      "costo_total": 17955.43
+     },
+     {
+      "codigo": "DULCEPAZ",
+      "desc": "PAN DULCE LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 1134.0,
+      "costo_total": 16670.55
+     },
+     {
+      "codigo": "7501020557695",
+      "desc": "QUEEN GALON",
+      "umed": "PIEZA",
+      "unidades": 310.0,
+      "costo_total": 16337.0
+     },
+     {
+      "codigo": "7501259620023",
+      "desc": "QUEEN 1LT",
+      "umed": "PIEZA",
+      "unidades": 529.0,
+      "costo_total": 15247.4
+     },
+     {
+      "codigo": "QEXC",
+      "desc": "QUESO EXCELSIOR",
+      "umed": "KILOGRAMO",
+      "unidades": 90.92,
+      "costo_total": 13505.33
+     },
+     {
+      "codigo": "TMS",
+      "desc": "TORTILLA DE MASECA",
+      "umed": "PIEZA",
+      "unidades": 632.0,
+      "costo_total": 13273.0
+     }
+    ],
+    "compras_top_unidades": [
+     {
+      "codigo": "TELERAPAZ",
+      "desc": "PAN TELERA LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 2106.0,
+      "costo_total": 9477.36
+     },
+     {
+      "codigo": "CS",
+      "desc": "CIGARRO MALBORO SUELTO",
+      "umed": "Pieza",
+      "unidades": 1765.0,
+      "costo_total": 10864.75
+     },
+     {
+      "codigo": "TMZ",
+      "desc": "TORTILLA DE MAIZ",
+      "umed": "PIEZA",
+      "unidades": 1585.0,
+      "costo_total": 31700.0
+     },
+     {
+      "codigo": "HUEV",
+      "desc": "HUEVO",
+      "umed": "KILOGRAMO",
+      "unidades": 1193.0,
+      "costo_total": 29288.62
+     },
+     {
+      "codigo": "FGR",
+      "desc": "FRIJOLES",
+      "umed": "PIEZA",
+      "unidades": 1151.0,
+      "costo_total": 24171.0
+     },
+     {
+      "codigo": "SFS",
+      "desc": "SALCHICHA FUD SUELTA",
+      "umed": "PIEZA",
+      "unidades": 1142.0,
+      "costo_total": 3813.96
+     },
+     {
+      "codigo": "DULCEPAZ",
+      "desc": "PAN DULCE LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 1134.0,
+      "costo_total": 16670.55
+     },
+     {
+      "codigo": "PEPI",
+      "desc": "PEPINO",
+      "umed": "KILOGRAMO",
+      "unidades": 1002.41,
+      "costo_total": 1932.37
+     },
+     {
+      "codigo": "7501055310227",
+      "desc": "COCA COLA 2.5 LR",
+      "umed": "PIEZA",
+      "unidades": 728.0,
+      "costo_total": 26344.4
+     },
+     {
+      "codigo": "TMS",
+      "desc": "TORTILLA DE MASECA",
+      "umed": "PIEZA",
+      "unidades": 632.0,
+      "costo_total": 13273.0
+     }
+    ],
+    "ventas_top_monto": [
+     {
+      "codigo": "HUEV",
+      "desc": "HUEVO",
+      "umed": "KILOGRAMO",
+      "unidades": 1045.28,
+      "venta": 31358.33
+     },
+     {
+      "codigo": "TMZ",
+      "desc": "TORTILLA DE MAIZ",
+      "umed": "PIEZA",
+      "unidades": 1274.07,
+      "venta": 29303.66
+     },
+     {
+      "codigo": "7501055310227",
+      "desc": "COCA COLA 2.5 LR",
+      "umed": "PIEZA",
+      "unidades": 707.0,
+      "venta": 28987.0
+     },
+     {
+      "codigo": "FGR",
+      "desc": "FRIJOLES",
+      "umed": "PIEZA",
+      "unidades": 1070.67,
+      "venta": 26766.85
+     },
+     {
+      "codigo": "QCOVA",
+      "desc": "QUESO COVARRUBIAS",
+      "umed": "KILOGRAMO",
+      "unidades": 101.28,
+      "venta": 17222.91
+     },
+     {
+      "codigo": "7501020557695",
+      "desc": "QUEEN GALON",
+      "umed": "PIEZA",
+      "unidades": 302.0,
+      "venta": 16912.0
+     },
+     {
+      "codigo": "7501259620023",
+      "desc": "QUEEN 1LT",
+      "umed": "PIEZA",
+      "unidades": 512.0,
+      "venta": 16384.0
+     },
+     {
+      "codigo": "DULCEPAZ",
+      "desc": "PAN DULCE LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 1002.0,
+      "venta": 16032.0
+     },
+     {
+      "codigo": "CS",
+      "desc": "CIGARRO MALBORO SUELTO",
+      "umed": "Pieza",
+      "unidades": 1752.0,
+      "venta": 15533.0
+     },
+     {
+      "codigo": "QEXC",
+      "desc": "QUESO EXCELSIOR",
+      "umed": "KILOGRAMO",
+      "unidades": 88.63,
+      "venta": 15244.44
+     }
+    ],
+    "ventas_top_unidades": [
+     {
+      "codigo": "TELERAPAZ",
+      "desc": "PAN TELERA LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 2055.0,
+      "venta": 10275.0
+     },
+     {
+      "codigo": "CS",
+      "desc": "CIGARRO MALBORO SUELTO",
+      "umed": "Pieza",
+      "unidades": 1752.0,
+      "venta": 15533.0
+     },
+     {
+      "codigo": "TMZ",
+      "desc": "TORTILLA DE MAIZ",
+      "umed": "PIEZA",
+      "unidades": 1274.07,
+      "venta": 29303.66
+     },
+     {
+      "codigo": "SFS",
+      "desc": "SALCHICHA FUD SUELTA",
+      "umed": "PIEZA",
+      "unidades": 1100.0,
+      "venta": 4400.0
+     },
+     {
+      "codigo": "FGR",
+      "desc": "FRIJOLES",
+      "umed": "PIEZA",
+      "unidades": 1070.67,
+      "venta": 26766.85
+     },
+     {
+      "codigo": "HUEV",
+      "desc": "HUEVO",
+      "umed": "KILOGRAMO",
+      "unidades": 1045.28,
+      "venta": 31358.33
+     },
+     {
+      "codigo": "DULCEPAZ",
+      "desc": "PAN DULCE LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 1002.0,
+      "venta": 16032.0
+     },
+     {
+      "codigo": "7501055310227",
+      "desc": "COCA COLA 2.5 LR",
+      "umed": "PIEZA",
+      "unidades": 707.0,
+      "venta": 28987.0
+     },
+     {
+      "codigo": "MINIPAN",
+      "desc": "PAN MINI",
+      "umed": "Pieza",
+      "unidades": 564.0,
+      "venta": 5076.0
+     },
+     {
+      "codigo": "7501055300594",
+      "desc": "COCA COLA 1.5 LR",
+      "umed": "PIEZA",
+      "unidades": 547.0,
+      "venta": 14769.0
+     }
+    ],
+    "n_compras": 1181,
+    "n_ventas": 1433
+   },
+   "PARRILLA2": {
+    "compras_top_monto": [
+     {
+      "codigo": "TMZ",
+      "desc": "TORTILLA DE MAIZ",
+      "umed": "PIEZA",
+      "unidades": 1596.0,
+      "costo_total": 31920.0
+     },
+     {
+      "codigo": "7501055310227",
+      "desc": "COCA COLA 2.5 LR",
+      "umed": "PIEZA",
+      "unidades": 600.0,
+      "costo_total": 21712.5
+     },
+     {
+      "codigo": "7501055300594",
+      "desc": "COCA COLA 1.5 LR",
+      "umed": "PIEZA",
+      "unidades": 756.0,
+      "costo_total": 18143.98
+     },
+     {
+      "codigo": "HUEV",
+      "desc": "HUEVO",
+      "umed": "KILOGRAMO",
+      "unidades": 722.2,
+      "costo_total": 17900.14
+     },
+     {
+      "codigo": "TELERAPAZ",
+      "desc": "PAN TELERA LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 2934.0,
+      "costo_total": 13205.0
+     },
+     {
+      "codigo": "7501259620023",
+      "desc": "QUEEN 1LT",
+      "umed": "PIEZA",
+      "unidades": 392.0,
+      "costo_total": 11256.0
+     },
+     {
+      "codigo": "QCOVA",
+      "desc": "QUESO COVARRUBIAS",
+      "umed": "KILOGRAMO",
+      "unidades": 68.9,
+      "costo_total": 10793.72
+     },
+     {
+      "codigo": "DULCEPAZ",
+      "desc": "PAN DULCE LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 716.0,
+      "costo_total": 10526.0
+     },
+     {
+      "codigo": "FGR",
+      "desc": "FRIJOLES",
+      "umed": "PIEZA",
+      "unidades": 471.0,
+      "costo_total": 9891.0
+     },
+     {
+      "codigo": "MARY",
+      "desc": "MARELY",
+      "umed": "PIEZA",
+      "unidades": 406.0,
+      "costo_total": 9338.0
+     }
+    ],
+    "compras_top_unidades": [
+     {
+      "codigo": "TELERAPAZ",
+      "desc": "PAN TELERA LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 2934.0,
+      "costo_total": 13205.0
+     },
+     {
+      "codigo": "TMZ",
+      "desc": "TORTILLA DE MAIZ",
+      "umed": "PIEZA",
+      "unidades": 1596.0,
+      "costo_total": 31920.0
+     },
+     {
+      "codigo": "CS",
+      "desc": "CIGARRO MALBORO SUELTO",
+      "umed": "Pieza",
+      "unidades": 1240.0,
+      "costo_total": 7065.0
+     },
+     {
+      "codigo": "7501055300594",
+      "desc": "COCA COLA 1.5 LR",
+      "umed": "PIEZA",
+      "unidades": 756.0,
+      "costo_total": 18143.98
+     },
+     {
+      "codigo": "HUEV",
+      "desc": "HUEVO",
+      "umed": "KILOGRAMO",
+      "unidades": 722.2,
+      "costo_total": 17900.14
+     },
+     {
+      "codigo": "DULCEPAZ",
+      "desc": "PAN DULCE LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 716.0,
+      "costo_total": 10526.0
+     },
+     {
+      "codigo": "PRS",
+      "desc": "CIGARRO PRESIDENTE SUELTO",
+      "umed": "Pieza",
+      "unidades": 660.0,
+      "costo_total": 1378.0
+     },
+     {
+      "codigo": "7501055310227",
+      "desc": "COCA COLA 2.5 LR",
+      "umed": "PIEZA",
+      "unidades": 600.0,
+      "costo_total": 21712.5
+     },
+     {
+      "codigo": "JALA",
+      "desc": "JALAPEÑO",
+      "umed": "KILOGRAMO",
+      "unidades": 575.98,
+      "costo_total": 836.26
+     },
+     {
+      "codigo": "75004699",
+      "desc": "COCA COLA 500 ML VIDRIO",
+      "umed": "PIEZA",
+      "unidades": 528.0,
+      "costo_total": 6930.0
+     }
+    ],
+    "ventas_top_monto": [
+     {
+      "codigo": "TMZ",
+      "desc": "TORTILLA DE MAIZ",
+      "umed": "PIEZA",
+      "unidades": 1283.56,
+      "venta": 29521.88
+     },
+     {
+      "codigo": "7501055310227",
+      "desc": "COCA COLA 2.5 LR",
+      "umed": "PIEZA",
+      "unidades": 574.0,
+      "venta": 23534.0
+     },
+     {
+      "codigo": "7501055300594",
+      "desc": "COCA COLA 1.5 LR",
+      "umed": "PIEZA",
+      "unidades": 779.0,
+      "venta": 21033.0
+     },
+     {
+      "codigo": "HUEV",
+      "desc": "HUEVO",
+      "umed": "KILOGRAMO",
+      "unidades": 646.72,
+      "venta": 19401.7
+     },
+     {
+      "codigo": "TELERAPAZ",
+      "desc": "PAN TELERA LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 2810.0,
+      "venta": 14050.0
+     },
+     {
+      "codigo": "7501259620023",
+      "desc": "QUEEN 1LT",
+      "umed": "PIEZA",
+      "unidades": 385.0,
+      "venta": 12320.0
+     },
+     {
+      "codigo": "FGR",
+      "desc": "FRIJOLES",
+      "umed": "PIEZA",
+      "unidades": 450.0,
+      "venta": 11250.0
+     },
+     {
+      "codigo": "DULCEPAZ",
+      "desc": "PAN DULCE LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 656.0,
+      "venta": 10496.0
+     },
+     {
+      "codigo": "MARY",
+      "desc": "MARELY",
+      "umed": "PIEZA",
+      "unidades": 395.0,
+      "venta": 10270.0
+     },
+     {
+      "codigo": "QCOVA",
+      "desc": "QUESO COVARRUBIAS",
+      "umed": "KILOGRAMO",
+      "unidades": 60.15,
+      "venta": 10226.68
+     }
+    ],
+    "ventas_top_unidades": [
+     {
+      "codigo": "TELERAPAZ",
+      "desc": "PAN TELERA LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 2810.0,
+      "venta": 14050.0
+     },
+     {
+      "codigo": "TMZ",
+      "desc": "TORTILLA DE MAIZ",
+      "umed": "PIEZA",
+      "unidades": 1283.56,
+      "venta": 29521.88
+     },
+     {
+      "codigo": "CS",
+      "desc": "CIGARRO MALBORO SUELTO",
+      "umed": "Pieza",
+      "unidades": 1144.0,
+      "venta": 10196.0
+     },
+     {
+      "codigo": "7501055300594",
+      "desc": "COCA COLA 1.5 LR",
+      "umed": "PIEZA",
+      "unidades": 779.0,
+      "venta": 21033.0
+     },
+     {
+      "codigo": "PRS",
+      "desc": "CIGARRO PRESIDENTE SUELTO",
+      "umed": "Pieza",
+      "unidades": 688.0,
+      "venta": 2064.0
+     },
+     {
+      "codigo": "DULCEPAZ",
+      "desc": "PAN DULCE LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 656.0,
+      "venta": 10496.0
+     },
+     {
+      "codigo": "HUEV",
+      "desc": "HUEVO",
+      "umed": "KILOGRAMO",
+      "unidades": 646.72,
+      "venta": 19401.7
+     },
+     {
+      "codigo": "7501055310227",
+      "desc": "COCA COLA 2.5 LR",
+      "umed": "PIEZA",
+      "unidades": 574.0,
+      "venta": 23534.0
+     },
+     {
+      "codigo": "75019020",
+      "desc": "CUARTITOS TECATE",
+      "umed": "PIEZA",
+      "unidades": 554.0,
+      "venta": 3996.0
+     },
+     {
+      "codigo": "75004699",
+      "desc": "COCA COLA 500 ML VIDRIO",
+      "umed": "PIEZA",
+      "unidades": 523.0,
+      "venta": 7845.0
+     }
+    ],
+    "n_compras": 997,
+    "n_ventas": 1179
+   },
+   "PARRILLA3": {
+    "compras_top_monto": [
+     {
+      "codigo": "TMZ",
+      "desc": "TORTILLA DE MAIZ",
+      "umed": "PIEZA",
+      "unidades": 636.5,
+      "costo_total": 12730.0
+     },
+     {
+      "codigo": "QCOVA",
+      "desc": "QUESO COVARRUBIAS",
+      "umed": "KILOGRAMO",
+      "unidades": 72.02,
+      "costo_total": 11463.62
+     },
+     {
+      "codigo": "HUEV",
+      "desc": "HUEVO",
+      "umed": "KILOGRAMO",
+      "unidades": 420.34,
+      "costo_total": 10542.32
+     },
+     {
+      "codigo": "CS",
+      "desc": "CIGARRO MALBORO SUELTO",
+      "umed": "Pieza",
+      "unidades": 1637.0,
+      "costo_total": 9510.55
+     },
+     {
+      "codigo": "FGR",
+      "desc": "FRIJOLES",
+      "umed": "PIEZA",
+      "unidades": 404.0,
+      "costo_total": 8484.0
+     },
+     {
+      "codigo": "7501055300594",
+      "desc": "COCA COLA 1.5 LR",
+      "umed": "PIEZA",
+      "unidades": 324.0,
+      "costo_total": 7654.5
+     },
+     {
+      "codigo": "7501055310227",
+      "desc": "COCA COLA 2.5 LR",
+      "umed": "PIEZA",
+      "unidades": 168.0,
+      "costo_total": 6079.5
+     },
+     {
+      "codigo": "DULCEPAZ",
+      "desc": "PAN DULCE LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 402.0,
+      "costo_total": 5909.4
+     },
+     {
+      "codigo": "75007614",
+      "desc": "COCA COLA 600 ML",
+      "umed": "PIEZA",
+      "unidades": 264.0,
+      "costo_total": 5082.0
+     },
+     {
+      "codigo": "75068738",
+      "desc": "MALBORO BLANCO 20'S",
+      "umed": "PIEZA",
+      "unidades": 50.0,
+      "costo_total": 4519.78
+     }
+    ],
+    "compras_top_unidades": [
+     {
+      "codigo": "CS",
+      "desc": "CIGARRO MALBORO SUELTO",
+      "umed": "Pieza",
+      "unidades": 1637.0,
+      "costo_total": 9510.55
+     },
+     {
+      "codigo": "TS",
+      "desc": "TIME  DEMI SUELTO",
+      "umed": "Pieza",
+      "unidades": 659.0,
+      "costo_total": 1108.5
+     },
+     {
+      "codigo": "TMZ",
+      "desc": "TORTILLA DE MAIZ",
+      "umed": "PIEZA",
+      "unidades": 636.5,
+      "costo_total": 12730.0
+     },
+     {
+      "codigo": "TELERAPAZ",
+      "desc": "PAN TELERA LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 450.0,
+      "costo_total": 2025.0
+     },
+     {
+      "codigo": "HUEV",
+      "desc": "HUEVO",
+      "umed": "KILOGRAMO",
+      "unidades": 420.34,
+      "costo_total": 10542.32
+     },
+     {
+      "codigo": "FGR",
+      "desc": "FRIJOLES",
+      "umed": "PIEZA",
+      "unidades": 404.0,
+      "costo_total": 8484.0
+     },
+     {
+      "codigo": "DULCEPAZ",
+      "desc": "PAN DULCE LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 402.0,
+      "costo_total": 5909.4
+     },
+     {
+      "codigo": "7501055300594",
+      "desc": "COCA COLA 1.5 LR",
+      "umed": "PIEZA",
+      "unidades": 324.0,
+      "costo_total": 7654.5
+     },
+     {
+      "codigo": "75004699",
+      "desc": "COCA COLA 500 ML VIDRIO",
+      "umed": "PIEZA",
+      "unidades": 299.0,
+      "costo_total": 3924.38
+     },
+     {
+      "codigo": "MANVER",
+      "desc": "MANZANA VERDE",
+      "umed": "KILOGRAMO",
+      "unidades": 298.39,
+      "costo_total": 164.14
+     }
+    ],
+    "ventas_top_monto": [
+     {
+      "codigo": "CS",
+      "desc": "CIGARRO MALBORO SUELTO",
+      "umed": "Pieza",
+      "unidades": 1592.0,
+      "venta": 14237.0
+     },
+     {
+      "codigo": "QCOVA",
+      "desc": "QUESO COVARRUBIAS",
+      "umed": "KILOGRAMO",
+      "unidades": 71.15,
+      "venta": 12110.9
+     },
+     {
+      "codigo": "HUEV",
+      "desc": "HUEVO",
+      "umed": "KILOGRAMO",
+      "unidades": 388.83,
+      "venta": 11664.96
+     },
+     {
+      "codigo": "TMZ",
+      "desc": "TORTILLA DE MAIZ",
+      "umed": "PIEZA",
+      "unidades": 482.98,
+      "venta": 11108.45
+     },
+     {
+      "codigo": "7501055300594",
+      "desc": "COCA COLA 1.5 LR",
+      "umed": "PIEZA",
+      "unidades": 328.0,
+      "venta": 8856.0
+     },
+     {
+      "codigo": "FGR",
+      "desc": "FRIJOLES",
+      "umed": "PIEZA",
+      "unidades": 347.0,
+      "venta": 8675.0
+     },
+     {
+      "codigo": "7501055310227",
+      "desc": "COCA COLA 2.5 LR",
+      "umed": "PIEZA",
+      "unidades": 160.0,
+      "venta": 6560.0
+     },
+     {
+      "codigo": "75007614",
+      "desc": "COCA COLA 600 ML",
+      "umed": "PIEZA",
+      "unidades": 259.0,
+      "venta": 5698.0
+     },
+     {
+      "codigo": "DULCEPAZ",
+      "desc": "PAN DULCE LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 352.0,
+      "venta": 5632.0
+     },
+     {
+      "codigo": "TMS",
+      "desc": "TORTILLA DE MASECA",
+      "umed": "PIEZA",
+      "unidades": 210.86,
+      "venta": 5060.64
+     }
+    ],
+    "ventas_top_unidades": [
+     {
+      "codigo": "CS",
+      "desc": "CIGARRO MALBORO SUELTO",
+      "umed": "Pieza",
+      "unidades": 1592.0,
+      "venta": 14237.0
+     },
+     {
+      "codigo": "TS",
+      "desc": "TIME  DEMI SUELTO",
+      "umed": "Pieza",
+      "unidades": 610.0,
+      "venta": 2378.0
+     },
+     {
+      "codigo": "TMZ",
+      "desc": "TORTILLA DE MAIZ",
+      "umed": "PIEZA",
+      "unidades": 482.98,
+      "venta": 11108.45
+     },
+     {
+      "codigo": "TELERAPAZ",
+      "desc": "PAN TELERA LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 439.0,
+      "venta": 2195.0
+     },
+     {
+      "codigo": "HUEV",
+      "desc": "HUEVO",
+      "umed": "KILOGRAMO",
+      "unidades": 388.83,
+      "venta": 11664.96
+     },
+     {
+      "codigo": "DULCEPAZ",
+      "desc": "PAN DULCE LA PAZ",
+      "umed": "PIEZAS",
+      "unidades": 352.0,
+      "venta": 5632.0
+     },
+     {
+      "codigo": "FGR",
+      "desc": "FRIJOLES",
+      "umed": "PIEZA",
+      "unidades": 347.0,
+      "venta": 8675.0
+     },
+     {
+      "codigo": "7501055300594",
+      "desc": "COCA COLA 1.5 LR",
+      "umed": "PIEZA",
+      "unidades": 328.0,
+      "venta": 8856.0
+     },
+     {
+      "codigo": "75004699",
+      "desc": "COCA COLA 500 ML VIDRIO",
+      "umed": "PIEZA",
+      "unidades": 266.0,
+      "venta": 3990.0
+     },
+     {
+      "codigo": "75015541",
+      "desc": "CUARTITO INDIO",
+      "umed": "PIEZA",
+      "unidades": 264.0,
+      "venta": 1886.0
+     }
+    ],
+    "n_compras": 737,
+    "n_ventas": 983
+   }
+  }
+ }
+}
