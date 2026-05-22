@@ -154,19 +154,21 @@ footer .fbrand{font-family:'Bricolage Grotesque';font-weight:800;color:var(--cre
 
 
 /* RENTABILIDAD */
-.rent-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;align-items:stretch}
+.rent-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch}
 .rent-step{background:linear-gradient(160deg,var(--panel),var(--bg2));border:1px solid var(--line);
-  border-radius:14px;padding:18px 16px;position:relative}
+  border-radius:14px;padding:20px 18px;position:relative;overflow:hidden}
+.rent-step::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--muted2),var(--line2))}
 .rent-step .rl{font-size:.66rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);font-weight:600}
-.rent-step .rv{font-family:'Bricolage Grotesque';font-weight:800;font-size:1.45rem;margin-top:7px;letter-spacing:-.5px;line-height:1.05}
-.rent-step .rs{font-family:'Space Mono';font-size:.66rem;color:var(--muted2);margin-top:6px}
-.rent-step.op{display:flex;align-items:center;justify-content:center;background:transparent;border:none;font-family:'Bricolage Grotesque';
-  font-weight:800;font-size:1.8rem;color:var(--ember);padding:0;min-width:24px}
+.rent-step .rv{font-family:'Bricolage Grotesque';font-weight:800;font-size:1.55rem;margin-top:8px;letter-spacing:-.5px;line-height:1.05}
+.rent-step .rs{font-family:'Space Mono';font-size:.66rem;color:var(--muted2);margin-top:7px}
 .rent-step.result{background:linear-gradient(160deg,rgba(246,193,75,.14),var(--panel) 75%);border-color:var(--line2)}
+.rent-step.result::before{background:linear-gradient(90deg,var(--gold),var(--amber))}
 .rent-step.result .rv{color:var(--gold)}
 .rent-step.big{background:linear-gradient(160deg,rgba(255,107,44,.16),var(--panel) 75%);border-color:var(--ember)}
+.rent-step.big::before{background:linear-gradient(90deg,var(--ember),var(--gold))}
 .rent-step.big .rv{font-size:2.1rem;background:linear-gradient(102deg,var(--ember),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-@media(max-width:760px){.rent-step.op{transform:rotate(90deg)}}
+@media(max-width:760px){.rent-flow{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:440px){.rent-flow{grid-template-columns:1fr}}
 @media(max-width:900px){.grid-2,.grid-2b,.stores,.tbl-2{grid-template-columns:1fr}}
 @media(max-width:860px){
   .nav-toggle{display:flex}
@@ -672,13 +674,9 @@ document.getElementById('kpiGlobal2').innerHTML = [
 const R = DATA.rentabilidad;
 document.getElementById('rentFlow').innerHTML = `
   <div class="rent-step"><div class="rl">Ventas brutas</div><div class="rv">${fmtMXN(R.ventas_brutas)}</div><div class="rs">ingreso total</div></div>
-  <div class="rent-step op">−</div>
   <div class="rent-step"><div class="rl">Devoluciones</div><div class="rv">${fmtMXN(R.devoluciones)}</div><div class="rs">ventas anuladas</div></div>
-  <div class="rent-step op">=</div>
   <div class="rent-step"><div class="rl">Ventas netas</div><div class="rv">${fmtMXN(R.ventas_netas)}</div><div class="rs">ingreso real</div></div>
-  <div class="rent-step op">−</div>
   <div class="rent-step"><div class="rl">Compras (costo)</div><div class="rv">${fmtMXN(R.compras)}</div><div class="rs">costo mercancía</div></div>
-  <div class="rent-step op">=</div>
   <div class="rent-step result"><div class="rl">Utilidad bruta</div><div class="rv">${fmtMXN(R.utilidad)}</div><div class="rs">ganancia</div></div>
   <div class="rent-step big"><div class="rl">Margen de rentabilidad</div><div class="rv">${fmtP(R.margen)}</div><div class="rs">markup s/costo ${fmtP(R.markup)}</div></div>
 `;
