@@ -44,6 +44,11 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
   font-size:1.05rem;letter-spacing:.5px;white-space:nowrap}
 .flame{width:26px;height:26px;flex:0 0 auto}
 .nav-links{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.nav-toggle{display:none;margin-left:auto;flex-direction:column;gap:4px;background:transparent;border:1px solid var(--line2);border-radius:9px;padding:9px 10px;cursor:pointer}
+.nav-toggle span{display:block;width:20px;height:2px;background:var(--cream);border-radius:2px;transition:.25s}
+.nav-toggle.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:500;
   padding:7px 12px;border-radius:8px;transition:.2s;white-space:nowrap}
 .nav-links a:hover{color:var(--cream);background:var(--panel2)}
@@ -148,6 +153,27 @@ footer .fbrand{font-family:'Bricolage Grotesque';font-weight:800;color:var(--cre
 .note b{color:var(--gold)}
 
 @media(max-width:900px){.grid-2,.grid-2b,.stores,.tbl-2{grid-template-columns:1fr}}
+@media(max-width:860px){
+  .nav-toggle{display:flex}
+  .nav-in{gap:12px;padding:11px 16px}
+  .nav-links{position:absolute;top:100%;left:0;right:0;margin-left:0;flex-direction:column;flex-wrap:nowrap;gap:0;
+    background:rgba(18,14,10,.98);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);
+    padding:6px 16px 14px;max-height:0;overflow:hidden;transition:max-height .32s ease;pointer-events:none}
+  .nav-links.open{max-height:580px;pointer-events:auto}
+  .nav-links a{padding:13px 10px;font-size:.95rem;border-bottom:1px solid var(--line);border-radius:0}
+  .nav-links a:last-child{border-bottom:none}
+}
+@media(max-width:640px){
+  .wrap{padding:0 15px}
+  header.hero{padding:42px 0 28px}
+  section{padding:34px 0;scroll-margin-top:62px}
+  .chart-box,.chart-box.tall,.chart-box.short{height:268px}
+  .kpi{padding:18px 18px 16px}
+  .kpi .val{font-size:1.72rem}
+  .panel{padding:17px}
+  .sec-head{margin-bottom:22px}
+  .store-card{padding:20px}
+}
 .fade{opacity:0;transform:translateY(18px);transition:.7s cubic-bezier(.2,.7,.2,1)}
 .fade.in{opacity:1;transform:none}
 </style>
@@ -159,7 +185,8 @@ footer .fbrand{font-family:'Bricolage Grotesque';font-weight:800;color:var(--cre
       <svg class="flame" viewBox="0 0 24 24" fill="none"><path d="M12 2c1 4-2 5-2 8a4 4 0 008 0c0-2-1-3-1-3 2 1 3 4 3 6a8 8 0 11-16 0c0-5 5-7 5-11 1 1 3 1 3 1z" fill="url(#fg)"/><defs><linearGradient id="fg" x1="4" y1="2" x2="20" y2="22"><stop stop-color="#ff6b2c"/><stop offset="1" stop-color="#f6c14b"/></linearGradient></defs></svg>
       DASHBOARD<span style="color:var(--ember)">PARRILLA</span>
     </div>
-    <div class="nav-links">
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
       <a href="#global">Global</a>
       <a href="#negocios">Negocios</a>
       <a href="#mensual">Mensual</a>
@@ -317,9 +344,9 @@ footer .fbrand{font-family:'Bricolage Grotesque';font-weight:800;color:var(--cre
   </section>
 
   <footer>
-    <div class="fbrand"></div>
-    <div> <span id="periodoFoot"></span>.</div>
-    <div style="margin-top:6px"></div>
+    <div class="fbrand">DASHBOARD PARRILLA</div>
+    <div>Análisis generado a partir de reportes de compras, ventas por artículo, ventas globales y devoluciones · Periodo <span id="periodoFoot"></span>.</div>
+    <div style="margin-top:6px">Construido con HTML + Chart.js · Listo para GitHub Pages.</div>
   </footer>
 </div>
 
@@ -335,6 +362,21 @@ const fmtP = n => n.toFixed(1)+'%';
 
 document.getElementById('periodo').textContent = DATA.meta.periodo;
 document.getElementById('periodoFoot').textContent = DATA.meta.periodo;
+
+/* ---- menú responsive ---- */
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+if(navToggle && navLinks){
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open'); navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded','false');
+  }));
+}
 
 /* ---- Chart.js global theme ---- */
 Chart.defaults.color = '#b59f87';
