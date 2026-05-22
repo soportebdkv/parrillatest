@@ -2272,5 +2272,65 @@
     "n_ventas": 983
    }
   }
+ },
+ "rentabilidad": {
+  "ventas_brutas": 2459493.6,
+  "devoluciones": 1344.83,
+  "ventas_netas": 2458148.77,
+  "compras": 2104246.66,
+  "utilidad": 353902.11,
+  "margen": 14.4,
+  "markup": 16.82,
+  "ratio": 85.6,
+  "prom_simple": 14.93,
+  "por_negocio": [
+   {
+    "k": "PARRILLA1",
+    "margen": 14.06,
+    "markup": 16.36,
+    "utilidad": 168662.72,
+    "ventas_netas": 1199879.27
+   },
+   {
+    "k": "PARRILLA2",
+    "margen": 13.35,
+    "markup": 15.4,
+    "utilidad": 110519.81,
+    "ventas_netas": 828043.84
+   },
+   {
+    "k": "PARRILLA3",
+    "margen": 17.37,
+    "markup": 21.02,
+    "utilidad": 74719.58,
+    "ventas_netas": 430225.66
+   }
+  ],
+  "mejor_mes": {
+   "mes": "Abril",
+   "margen": 19.02
+  },
+  "peor_mes": {
+   "mes": "Febrero",
+   "margen": 10.81
+  },
+  "margen_mensual": [
+   {
+    "mes": "Enero",
+    "margen": 14.51
+   },
+   {
+    "mes": "Febrero",
+    "margen": 10.81
+   },
+   {
+    "mes": "Marzo",
+    "margen": 13.26
+   },
+   {
+    "mes": "Abril",
+    "margen": 19.02
+   }
+  ]
  }
 }
